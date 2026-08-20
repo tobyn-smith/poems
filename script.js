@@ -147,7 +147,6 @@ if (poemList && collection) {
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       <summary class="poem-entry-heading" aria-label="${poem.title}">
         <h2>${poem.title}</h2>
-        <span class="poem-entry-arrow" aria-hidden="true">↘</span>
       </summary>
       <div class="poem-entry-body">${stanzas}</div>
     </details>`;
