@@ -113,6 +113,16 @@ const poemList = document.querySelector("#poem-list");
 const collection = document.body.dataset.collection;
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
+const currentPage = location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".site-nav a").forEach((link) => {
+  if (link.getAttribute("href") === currentPage) link.setAttribute("aria-current", "page");
+});
+
+poems.forEach((poem) => {
+  poem.title = poem.title.toLowerCase();
+  poem.body = poem.body.map((stanza) => stanza.toLowerCase());
+});
 
 const progress = document.createElement("div");
 progress.className = "scroll-progress";
@@ -146,6 +156,7 @@ if (poemList && collection) {
     const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       <summary class="poem-entry-heading" aria-label="${poem.title}">
+        <span class="poem-entry-number">${poem.number}</span>
         <h2>${poem.title}</h2>
       </summary>
       <div class="poem-entry-body">${stanzas}</div>
@@ -167,6 +178,11 @@ if (poemList && collection) {
   });
   window.addEventListener("hashchange", openFromHash);
   openFromHash();
+
+  const readingObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting));
+  }, { rootMargin: "-24% 0px -58% 0px", threshold: 0 });
+  poemList.querySelectorAll(".poem-entry").forEach((entry) => readingObserver.observe(entry));
 }
 
 document.addEventListener("keydown", (event) => {
