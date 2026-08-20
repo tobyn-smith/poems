@@ -110,9 +110,9 @@ const poems = [
 ];
 
 const poemList = document.querySelector("#poem-list");
-const searchInput = document.querySelector("#poem-search");
 const resultCount = document.querySelector("#result-count");
-const emptyState = document.querySelector("#empty-state");
+const readingTitle = document.querySelector("#reading-title");
+const collectionsTitle = document.querySelector("#collections-title");
 const reader = document.querySelector("#reader");
 const readerTitle = document.querySelector("#reader-title");
 const readerBody = document.querySelector("#reader-body");
@@ -124,27 +124,21 @@ let visiblePoems = poems;
 let currentIndex = 0;
 
 function filteredPoems() {
-  const query = searchInput.value.trim().toLowerCase();
-  return poems.filter((poem) => {
-    const matchesCollection = activeFilter === "all" || poem.collection === activeFilter;
-    const searchable = `${poem.title} ${poem.collectionLabel} ${poem.body.join(" ")}`.toLowerCase();
-    return matchesCollection && (!query || searchable.includes(query));
-  });
+  return activeFilter === "all" ? poems : poems.filter((poem) => poem.collection === activeFilter);
 }
 
 function renderList() {
   visiblePoems = filteredPoems();
   poemList.innerHTML = visiblePoems.map((poem) => {
     const index = poems.indexOf(poem);
-    return `<button class="poem-row" type="button" data-index="${index}">
+    return `<button class="poem-row" type="button" data-index="${index}" aria-label="${poem.title}">
       <span class="poem-number">${poem.number}</span>
       <span class="poem-name">${poem.title}</span>
       <span class="poem-collection">${poem.collectionLabel}</span>
       <span class="poem-arrow" aria-hidden="true">↗</span>
     </button>`;
   }).join("");
-  resultCount.textContent = `${visiblePoems.length} ${visiblePoems.length === 1 ? "piece" : "pieces"}`;
-  emptyState.hidden = visiblePoems.length !== 0;
+  resultCount.textContent = visiblePoems.length;
 }
 
 function openReader(index) {
@@ -169,8 +163,8 @@ document.addEventListener("click", (event) => {
   const row = event.target.closest(".poem-row");
   if (row) openReader(Number(row.dataset.index));
 
-  const collectionCard = event.target.closest(".collection-card");
-  if (collectionCard && collectionCard.dataset.collection !== "four") {
+  const collectionCard = event.target.closest(".collection-card[data-collection]");
+  if (collectionCard) {
     setFilter(collectionCard.dataset.collection);
     document.querySelector("#reading").scrollIntoView({ behavior: "smooth" });
   }
@@ -185,10 +179,12 @@ document.querySelectorAll(".nav-item").forEach((button) => {
 function setFilter(filter) {
   activeFilter = filter;
   document.querySelectorAll(".nav-item").forEach((item) => item.classList.toggle("active", item.dataset.filter === filter));
+  const title = filter === "all" ? "tobyn's poems" : `collection ${filter}`;
+  readingTitle.textContent = title;
+  collectionsTitle.textContent = title;
   renderList();
 }
 
-searchInput.addEventListener("input", renderList);
 document.querySelector("#next-poem").addEventListener("click", () => openReader((currentIndex + 1) % poems.length));
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !reader.hidden) closeReader();

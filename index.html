@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f3eee6" />
-    <meta name="description" content="Tobyn Smith's poetry archive — poems worked on since 2017." />
-    <title>tobyn's poems — an archive of feeling</title>
+    <meta name="theme-color" content="#0b0b0b" />
+    <meta name="description" content="This website contains all the poems I've worked on since 2017. They all mean a lot to me, so I hope you enjoy them and maybe even resonate with one or two. New collections are constantly being worked upon." />
+    <title>tobyn's poems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -13,136 +13,88 @@
   </head>
   <body>
     <div class="site-shell">
-      <header class="topbar">
-        <a class="wordmark" href="#top" aria-label="Tobyn's poems home">
-          <span class="wordmark-mark">ts</span>
-          <span>tobyn's poems</span>
-        </a>
-        <div class="topbar-meta">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>an ongoing archive</span>
-          <span class="topbar-year">2017—now</span>
-        </div>
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="tobyn's poems">tobyn's poems</a>
+        <span class="header-year">2017</span>
       </header>
 
       <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-kicker"><span class="rule"></span> notes from the in-between</div>
-          <div class="hero-grid">
-            <div>
-              <h1 id="hero-title">a little<br /><em>archive</em><br />of feeling.</h1>
-              <p class="hero-intro">All the poems I've worked on since 2017. They all mean a lot to me, so I hope you enjoy them — and maybe even resonate with one or two.</p>
-              <a class="text-link" href="#collections">enter the collections <span>↓</span></a>
-            </div>
-            <div class="hero-aside">
-              <div class="orbit" aria-hidden="true"><span>✳</span></div>
-              <p>New collections are constantly being worked upon.</p>
-              <span class="aside-index">01 / 04</span>
-            </div>
-          </div>
-          <div class="hero-bottom">
-            <span>tobyn smith</span>
-            <span>poetry / prose / memory</span>
-            <span>scroll to read</span>
+        <section class="intro" aria-labelledby="intro-title">
+          <div class="intro-marker">01</div>
+          <div class="intro-copy">
+            <h1 id="intro-title">tobyn's<br /><span>poems</span></h1>
+            <p>This website contains all the poems I've worked on since 2017. They all mean a lot to me, so I hope you enjoy them and maybe even resonate with one or two. New collections are constantly being worked upon.</p>
           </div>
         </section>
 
-        <section class="archive-section" id="collections" aria-labelledby="collections-title">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow">the archive</span>
-              <h2 id="collections-title">four collections,<br /><em>still becoming.</em></h2>
-            </div>
-            <p class="section-note">A collection is a small weather system. Enter one and stay as long as you like.</p>
+        <section class="collections" id="collections" aria-labelledby="collections-title">
+          <div class="section-rule">
+            <span>02</span>
+            <h2 id="collections-title">tobyn's poems</h2>
           </div>
-
           <div class="collection-grid">
-            <button class="collection-card card-one" data-collection="one" type="button">
+            <button class="collection-card" data-collection="one" type="button" aria-label="collection one">
               <span class="card-number">01</span>
-              <span class="card-symbol" aria-hidden="true">◌</span>
-              <span class="card-title">collection one</span>
-              <span class="card-count">8 poems</span>
-              <span class="card-arrow" aria-hidden="true">↗</span>
+              <span class="card-name">collection one</span>
             </button>
-            <button class="collection-card card-two" data-collection="two" type="button">
+            <button class="collection-card" data-collection="two" type="button" aria-label="collection two">
               <span class="card-number">02</span>
-              <span class="card-symbol" aria-hidden="true">✳</span>
-              <span class="card-title">collection two</span>
-              <span class="card-count">9 poems</span>
-              <span class="card-arrow" aria-hidden="true">↗</span>
+              <span class="card-name">collection two</span>
             </button>
-            <button class="collection-card card-three" data-collection="three" type="button">
+            <button class="collection-card" data-collection="three" type="button" aria-label="collection three">
               <span class="card-number">03</span>
-              <span class="card-symbol" aria-hidden="true">⌁</span>
-              <span class="card-title">collection three</span>
-              <span class="card-count">9 poems</span>
-              <span class="card-arrow" aria-hidden="true">↗</span>
+              <span class="card-name">collection three</span>
             </button>
-            <button class="collection-card card-four is-coming" data-collection="four" type="button">
+            <div class="collection-card collection-card-coming" aria-label="collection four">
               <span class="card-number">04</span>
-              <span class="card-symbol" aria-hidden="true">+</span>
-              <span class="card-title">collection four</span>
-              <span class="card-count">coming soon</span>
-              <span class="card-arrow" aria-hidden="true">↗</span>
-            </button>
-          </div>
-        </section>
-
-        <section class="reading-section" id="reading" aria-labelledby="reading-title">
-          <div class="reading-topline">
-            <span class="eyebrow">choose a page</span>
-            <label class="search-wrap">
-              <span class="sr-only">Search poems</span>
-              <span class="search-icon" aria-hidden="true">⌕</span>
-              <input id="poem-search" type="search" placeholder="search the archive" autocomplete="off" />
-            </label>
-          </div>
-          <div class="reading-layout">
-            <aside class="collection-nav" aria-label="Collection navigation">
-              <p class="nav-label">collections</p>
-              <button class="nav-item active" data-filter="all" type="button"><span>all poems</span><span>26</span></button>
-              <button class="nav-item" data-filter="one" type="button"><span>collection one</span><span>01</span></button>
-              <button class="nav-item" data-filter="two" type="button"><span>collection two</span><span>02</span></button>
-              <button class="nav-item" data-filter="three" type="button"><span>collection three</span><span>03</span></button>
-              <div class="nav-note"><span class="status-dot" aria-hidden="true"></span><span>collection four<br /><em>in progress</em></span></div>
-            </aside>
-            <div class="poem-index">
-              <div class="index-header">
-                <h2 id="reading-title">the poem index</h2>
-                <span id="result-count">26 pieces</span>
-              </div>
-              <div id="poem-list" class="poem-list"></div>
-              <p id="empty-state" class="empty-state" hidden>No poems found. Try another word.</p>
+              <span class="card-name">collection four</span>
+              <span class="coming-soon">coming soon!</span>
             </div>
           </div>
         </section>
 
-        <section class="closing-section" aria-labelledby="closing-title">
-          <div class="closing-mark" aria-hidden="true">✳</div>
-          <p class="eyebrow">a note from the desk</p>
-          <h2 id="closing-title">thank you for<br /><em>being here.</em></h2>
-          <p>There are always more words somewhere just out of sight. Come back soon.</p>
+        <section class="archive" id="reading" aria-labelledby="reading-title">
+          <div class="archive-topline">
+            <span class="section-number">03</span>
+            <span id="result-count">26</span>
+          </div>
+          <div class="archive-layout">
+            <nav class="collection-nav" aria-label="tobyn's poems">
+              <button class="nav-item active" data-filter="all" type="button">tobyn's poems</button>
+              <button class="nav-item" data-filter="one" type="button">collection one</button>
+              <button class="nav-item" data-filter="two" type="button">collection two</button>
+              <button class="nav-item" data-filter="three" type="button">collection three</button>
+              <span class="nav-four">collection four</span>
+            </nav>
+            <div class="poem-index">
+              <h2 id="reading-title">tobyn's poems</h2>
+              <div id="poem-list" class="poem-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="closing" aria-labelledby="closing-title">
+          <div class="section-number">04</div>
+          <h2 id="closing-title">New collections are constantly being worked upon.</h2>
         </section>
       </main>
 
-      <footer class="footer">
-        <span>© 2025 Tobyn Smith</span>
-        <span>all rights reserved</span>
-        <a href="#top">back to top ↑</a>
+      <footer class="site-footer">
+        <span>© 2025 TOBYN SMITH, All Rights Reserved</span>
+        <a href="#top" aria-label="tobyn's poems">tobyn's poems</a>
       </footer>
     </div>
 
     <div class="reader-overlay" id="reader" hidden>
       <div class="reader-backdrop" data-close-reader></div>
       <article class="reader-panel" role="dialog" aria-modal="true" aria-labelledby="reader-title">
-        <button class="reader-close" type="button" data-close-reader aria-label="Close poem">close <span>×</span></button>
+        <button class="reader-close" type="button" data-close-reader aria-label="tobyn's poems">×</button>
         <div class="reader-meta"><span id="reader-collection">collection one</span><span id="reader-number">i.</span></div>
         <div class="reader-content">
-          <p class="reader-kicker">a poem by tobyn smith</p>
           <h2 id="reader-title">heartfelt</h2>
           <div id="reader-body" class="reader-body"></div>
         </div>
-        <div class="reader-footer"><span id="reader-position">01 / 26</span><button id="next-poem" type="button">next poem <span>→</span></button></div>
+        <div class="reader-footer"><span id="reader-position">01 / 26</span><button id="next-poem" type="button" aria-label="tobyn's poems">→</button></div>
       </article>
     </div>
 
