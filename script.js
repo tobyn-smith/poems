@@ -111,19 +111,76 @@ const poems = [
 
 const poemList = document.querySelector("#poem-list");
 const collection = document.body.dataset.collection;
+const header = document.querySelector(".site-header");
+const menuToggle = document.querySelector(".menu-toggle");
+
+const progress = document.createElement("div");
+progress.className = "scroll-progress";
+progress.setAttribute("aria-hidden", "true");
+document.body.append(progress);
+
+function updateProgress() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const amount = scrollable > 0 ? window.scrollY / scrollable : 0;
+  progress.style.transform = `scaleX(${amount})`;
+}
+
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+updateProgress();
+
+if (menuToggle && header) {
+  menuToggle.addEventListener("click", () => {
+    const open = header.classList.toggle("nav-open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+  });
+  header.querySelectorAll(".site-nav a").forEach((link) => {
+    link.addEventListener("click", () => header.classList.remove("nav-open"));
+  });
+}
 
 if (poemList && collection) {
   const collectionPoems = poems.filter((poem) => poem.collection === collection);
-  poemList.innerHTML = collectionPoems.map((poem) => {
+  poemList.innerHTML = collectionPoems.map((poem, collectionIndex) => {
     const index = poems.indexOf(poem);
     const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
-    return `<article class="poem-entry" id="poem-${index}">
-      <a class="poem-entry-heading" href="#poem-${index}" aria-label="${poem.title}">
+    return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
+      <summary class="poem-entry-heading" aria-label="${poem.title}">
         <span class="poem-entry-number">${poem.number}</span>
         <h2>${poem.title}</h2>
         <span class="poem-entry-arrow" aria-hidden="true">↘</span>
-      </a>
+      </summary>
       <div class="poem-entry-body">${stanzas}</div>
-    </article>`;
+    </details>`;
   }).join("");
+
+  const openFromHash = () => {
+    const target = location.hash ? document.querySelector(location.hash) : null;
+    if (target && target.matches("details")) {
+      target.open = true;
+      requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    }
+  };
+
+  poemList.querySelectorAll("details").forEach((entry) => {
+    entry.addEventListener("toggle", () => {
+      if (entry.open) history.replaceState(null, "", `#${entry.id}`);
+    });
+  });
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
 }
+
+document.addEventListener("keydown", (event) => {
+  if (!poemList || !collection || !["ArrowDown", "ArrowUp"].includes(event.key)) return;
+  const entries = [...poemList.querySelectorAll("details")];
+  const current = entries.findIndex((entry) => entry.contains(document.activeElement));
+  if (current < 0) return;
+  const next = event.key === "ArrowDown" ? entries[current + 1] : entries[current - 1];
+  if (next) {
+    event.preventDefault();
+    next.querySelector("summary").focus();
+    next.open = true;
+    next.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
