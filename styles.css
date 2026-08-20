@@ -30,7 +30,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
   min-height: 76px;
   padding: 0 clamp(24px, 5.4vw, 86px);
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 42px;
   border-bottom: 1px solid var(--line);
@@ -47,7 +47,6 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
   transition: color .2s;
 }
 .site-nav a:hover { color: var(--red); }
-.header-year { color: var(--red); font-family: var(--mono); font-size: 10px; letter-spacing: .09em; }
 .menu-toggle { display: none; }
 .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left center; pointer-events: none; }
 
@@ -192,10 +191,9 @@ h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.075em; }
 .coming-page p { margin: 38px 0 0; color: var(--cream); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 
 @media (max-width: 850px) {
-  .site-header { grid-template-columns: auto 1fr auto; gap: 18px; padding-top: 17px; padding-bottom: 2px; }
+  .site-header { grid-template-columns: 1fr auto; gap: 18px; padding-top: 17px; padding-bottom: 2px; }
   .wordmark { grid-column: 1; grid-row: 1; }
-  .header-year { grid-column: 2; grid-row: 1; justify-self: end; }
-  .menu-toggle { grid-column: 3; grid-row: 1; width: 31px; height: 31px; padding: 7px 5px; display: flex; flex-direction: column; justify-content: center; gap: 5px; border: 1px solid var(--line); background: transparent; cursor: pointer; }
+  .menu-toggle { grid-column: 2; grid-row: 1; width: 31px; height: 31px; padding: 7px 5px; display: flex; flex-direction: column; justify-content: center; gap: 5px; border: 1px solid var(--line); background: transparent; cursor: pointer; }
   .menu-toggle span { display: block; width: 100%; border-top: 1px solid var(--cream); transition: transform .2s; }
   .site-header.nav-open .menu-toggle span:first-child { transform: translateY(3px) rotate(45deg); }
   .site-header.nav-open .menu-toggle span:last-child { transform: translateY(-3px) rotate(-45deg); }
@@ -207,7 +205,7 @@ h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.075em; }
   .preview-collection:last-child { grid-column: 1 / -1; max-width: calc(50% - 14px); }
 }
 @media (max-width: 600px) {
-  .site-header { grid-template-columns: 1fr auto auto; gap: 14px; }
+  .site-header { grid-template-columns: 1fr auto; gap: 14px; }
   .site-nav { gap: 18px; }
   .site-nav a { font-size: 8px; }
   .home-hero { padding-top: 61px; padding-bottom: 67px; border-top-width: 8px; }
