@@ -164,7 +164,7 @@ h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.075em; }
   text-align: left;
   cursor: pointer;
   list-style: none;
-  grid-template-columns: 45px minmax(0, 1fr) 28px;
+  grid-template-columns: minmax(0, 1fr) 28px;
   gap: 15px;
   align-items: baseline;
   padding: 25px 0 22px;
@@ -175,7 +175,6 @@ h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.075em; }
 .poem-entry-heading:hover { color: var(--red-dark); }
 .poem-entry[open] .poem-entry-arrow { transform: rotate(90deg); }
 .poem-entry-arrow { transition: transform .25s ease; }
-.poem-entry-number { color: var(--red-dark); font-family: var(--mono); font-size: 10px; }
 .poem-entry-heading h2 { margin: 0; font-size: clamp(24px, 3.2vw, 44px); line-height: 1.08; }
 .poem-entry-arrow { color: var(--red-dark); font-size: 18px; text-align: right; }
 .poem-entry-body { max-width: 64ch; padding: 0 0 43px 60px; color: var(--ink-muted); font-family: var(--serif); font-size: 15px; line-height: 1.9; }
@@ -222,7 +221,7 @@ h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.075em; }
   .collection-hero h1 { font-size: clamp(46px, 14vw, 82px); }
   .collection-hero h1::after { margin-top: 26px; }
   .poems-section { padding: 50px 22px 80px; }
-  .poem-entry-heading { grid-template-columns: 29px minmax(0, 1fr) 18px; gap: 8px; padding: 19px 0; }
+  .poem-entry-heading { grid-template-columns: minmax(0, 1fr) 18px; gap: 8px; padding: 19px 0; }
   .poem-entry-heading h2 { font-size: 22px; }
   .poem-entry-body { padding: 0 0 35px 37px; font-size: 14px; line-height: 1.82; }
   .coming-page { min-height: calc(100vh - 168px); padding-top: 67px; border-top-width: 8px; }

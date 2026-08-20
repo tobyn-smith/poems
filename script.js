@@ -146,7 +146,6 @@ if (poemList && collection) {
     const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       <summary class="poem-entry-heading" aria-label="${poem.title}">
-        <span class="poem-entry-number">${poem.number}</span>
         <h2>${poem.title}</h2>
         <span class="poem-entry-arrow" aria-hidden="true">↘</span>
       </summary>
