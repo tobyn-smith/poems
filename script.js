@@ -110,85 +110,20 @@ const poems = [
 ];
 
 const poemList = document.querySelector("#poem-list");
-const resultCount = document.querySelector("#result-count");
-const readingTitle = document.querySelector("#reading-title");
-const collectionsTitle = document.querySelector("#collections-title");
-const reader = document.querySelector("#reader");
-const readerTitle = document.querySelector("#reader-title");
-const readerBody = document.querySelector("#reader-body");
-const readerCollection = document.querySelector("#reader-collection");
-const readerNumber = document.querySelector("#reader-number");
-const readerPosition = document.querySelector("#reader-position");
-let activeFilter = "all";
-let visiblePoems = poems;
-let currentIndex = 0;
+const collection = document.body.dataset.collection;
 
-function filteredPoems() {
-  return activeFilter === "all" ? poems : poems.filter((poem) => poem.collection === activeFilter);
-}
-
-function renderList() {
-  visiblePoems = filteredPoems();
-  poemList.innerHTML = visiblePoems.map((poem) => {
+if (poemList && collection) {
+  const collectionPoems = poems.filter((poem) => poem.collection === collection);
+  poemList.innerHTML = collectionPoems.map((poem) => {
     const index = poems.indexOf(poem);
-    return `<button class="poem-row" type="button" data-index="${index}" aria-label="${poem.title}">
-      <span class="poem-number">${poem.number}</span>
-      <span class="poem-name">${poem.title}</span>
-      <span class="poem-collection">${poem.collectionLabel}</span>
-      <span class="poem-arrow" aria-hidden="true">↗</span>
-    </button>`;
+    const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
+    return `<article class="poem-entry" id="poem-${index}">
+      <a class="poem-entry-heading" href="#poem-${index}" aria-label="${poem.title}">
+        <span class="poem-entry-number">${poem.number}</span>
+        <h2>${poem.title}</h2>
+        <span class="poem-entry-arrow" aria-hidden="true">↘</span>
+      </a>
+      <div class="poem-entry-body">${stanzas}</div>
+    </article>`;
   }).join("");
-  resultCount.textContent = visiblePoems.length;
 }
-
-function openReader(index) {
-  currentIndex = index;
-  const poem = poems[currentIndex];
-  readerTitle.textContent = poem.title;
-  readerCollection.textContent = poem.collectionLabel;
-  readerNumber.textContent = poem.number;
-  readerBody.innerHTML = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
-  readerPosition.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${poems.length}`;
-  reader.hidden = false;
-  document.body.classList.add("reader-open");
-  reader.querySelector(".reader-close").focus();
-}
-
-function closeReader() {
-  reader.hidden = true;
-  document.body.classList.remove("reader-open");
-}
-
-document.addEventListener("click", (event) => {
-  const row = event.target.closest(".poem-row");
-  if (row) openReader(Number(row.dataset.index));
-
-  const collectionCard = event.target.closest(".collection-card[data-collection]");
-  if (collectionCard) {
-    setFilter(collectionCard.dataset.collection);
-    document.querySelector("#reading").scrollIntoView({ behavior: "smooth" });
-  }
-
-  if (event.target.closest("[data-close-reader]")) closeReader();
-});
-
-document.querySelectorAll(".nav-item").forEach((button) => {
-  button.addEventListener("click", () => setFilter(button.dataset.filter));
-});
-
-function setFilter(filter) {
-  activeFilter = filter;
-  document.querySelectorAll(".nav-item").forEach((item) => item.classList.toggle("active", item.dataset.filter === filter));
-  const title = filter === "all" ? "tobyn's poems" : `collection ${filter}`;
-  readingTitle.textContent = title;
-  collectionsTitle.textContent = title;
-  renderList();
-}
-
-document.querySelector("#next-poem").addEventListener("click", () => openReader((currentIndex + 1) % poems.length));
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !reader.hidden) closeReader();
-  if (event.key === "ArrowRight" && !reader.hidden) openReader((currentIndex + 1) % poems.length);
-});
-
-renderList();
