@@ -193,6 +193,7 @@ if (revealItems.length) {
     revealIfOnscreen();
     window.addEventListener("resize", revealIfOnscreen);
     window.visualViewport?.addEventListener("resize", revealIfOnscreen);
+    window.setTimeout(() => revealItems.forEach(revealItem), 900);
   }
 }
 

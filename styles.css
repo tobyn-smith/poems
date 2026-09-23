@@ -12,6 +12,9 @@
   --body: "Libre Baskerville", Georgia, serif;
   --sans: Arial, sans-serif;
   --mono: "DM Mono", monospace;
+  --page-measure: 1500px;
+  --page-gutter: clamp(20px, 5.4vw, 86px);
+  --page-inline: max(var(--page-gutter), calc((100vw - var(--page-measure)) / 2));
 }
 
 * { box-sizing: border-box; }
@@ -42,7 +45,7 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
 
 .site-header {
   min-height: 68px;
-  padding: 0 clamp(20px, 5.4vw, 86px);
+  padding: 0 var(--page-inline);
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -74,7 +77,7 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
 /* The homepage is the cover and shelf of the chapbook. */
 .home-hero {
   min-height: min(700px, calc(100vh - 68px));
-  padding: clamp(70px, 10vw, 145px) clamp(24px, 5.4vw, 86px) clamp(75px, 9vw, 125px);
+  padding: clamp(70px, 10vw, 145px) var(--page-inline) clamp(75px, 9vw, 125px);
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(270px, .85fr);
   align-items: end;
@@ -84,7 +87,7 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
   color: var(--paper);
 }
 .home-hero::before { content: ""; position: absolute; left: 48%; top: 15%; width: clamp(180px, 22vw, 340px); aspect-ratio: 1; border: 1px solid rgba(181, 44, 35, .13); border-radius: 48% 52% 46% 54%; transform: rotate(-18deg); animation: ink-orbit 18s ease-in-out infinite alternate; pointer-events: none; }
-.home-hero::after { content: ""; position: absolute; right: clamp(24px, 5.4vw, 86px); bottom: 0; width: 1px; height: 44%; background: var(--signal); opacity: .8; transform-origin: bottom; animation: thread-draw 1.2s .35s cubic-bezier(.2,.8,.2,1) both; }
+.home-hero::after { content: ""; position: absolute; right: var(--page-inline); bottom: 0; width: 1px; height: 44%; background: var(--signal); opacity: .8; transform-origin: bottom; animation: thread-draw 1.2s .35s cubic-bezier(.2,.8,.2,1) both; }
 .home-opening-mark { position: absolute; z-index: 0; left: 48%; top: 19%; width: clamp(210px, 29vw, 430px); aspect-ratio: 1.55; border: 1px solid rgba(181, 44, 35, .26); opacity: 0; transform: rotate(-13deg) scale(.92); animation: opening-mark-in 1.5s .08s cubic-bezier(.2,.8,.2,1) forwards, opening-mark-drift 16s 1.6s ease-in-out infinite alternate; pointer-events: none; }
 .home-opening-mark::before, .home-opening-mark::after, .home-opening-mark span::before, .home-opening-mark span::after { content: ""; position: absolute; box-sizing: border-box; }
 .home-opening-mark::before { inset: 13% 18%; border: 1px solid rgba(238, 230, 218, .24); transform: rotate(19deg); }
@@ -138,7 +141,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   position: relative;
   z-index: 1;
   margin: -34px 0 0;
-  padding: clamp(78px, 9vw, 120px) clamp(24px, 5.4vw, 86px) clamp(80px, 9vw, 130px);
+  padding: clamp(78px, 9vw, 120px) var(--page-inline) clamp(80px, 9vw, 130px);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(28px, 5vw, 80px);
@@ -146,19 +149,6 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   box-shadow: 0 -18px 42px rgba(0, 0, 0, .24);
   background: var(--paper);
   color: var(--paper-ink);
-}
-@media (min-width: 1600px) {
-  .home-hero {
-    min-height: min(820px, calc(100vh - 68px));
-    padding-left: clamp(48px, 6vw, 120px);
-    padding-right: clamp(48px, 6vw, 120px);
-  }
-  .home-copy h1 { font-size: clamp(96px, 9vw, 220px); }
-  .collection-preview {
-    padding-left: clamp(48px, 6vw, 120px);
-    padding-right: clamp(48px, 6vw, 120px);
-    gap: clamp(40px, 4vw, 96px);
-  }
 }
 .preview-collection { min-width: 0; }
 .reveal-on-scroll { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.8,.2,1); }
@@ -179,7 +169,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .preview-poems a { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--paper-muted); font-family: var(--body); font-size: 13px; line-height: 1.3; transition: color .2s, padding-left .2s; }
 .preview-poems a:hover { padding-left: 8px; color: var(--signal-dark); }
 
-.site-footer { min-height: 76px; padding: 0 clamp(24px, 5.4vw, 86px); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
+.site-footer { min-height: 76px; padding: 0 var(--page-inline); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
 .site-footer a { color: var(--signal); }
 
 /* A collection cover becomes a paper page; the surface change is gradual and shared. */
@@ -187,7 +177,7 @@ body[data-collection="one"] { --atmosphere: #762631; --atmosphere-soft: rgba(118
 body[data-collection="two"] { --atmosphere: #b34a25; --atmosphere-soft: rgba(179, 74, 37, .14); }
 body[data-collection="three"] { --atmosphere: #5f2030; --atmosphere-soft: rgba(95, 32, 48, .14); }
 .collection-page { position: relative; overflow: hidden; }
-.collection-hero { position: relative; overflow: hidden; padding: clamp(54px, 8vw, 110px) clamp(24px, 7vw, 110px) clamp(72px, 9vw, 125px); background: var(--paper); color: var(--paper-ink); }
+.collection-hero { position: relative; overflow: hidden; padding: clamp(54px, 8vw, 110px) var(--page-inline) clamp(72px, 9vw, 125px); background: var(--paper); color: var(--paper-ink); }
 .collection-hero::before, .collection-hero::after { content: ""; position: absolute; z-index: 0; pointer-events: none; color: var(--atmosphere); }
 .collection-hero::before { left: 45%; top: 18%; width: 47vw; max-width: 690px; height: 68%; border: 1px solid currentColor; opacity: .26; transform: rotate(-12deg); }
 .collection-hero::after { left: 51%; top: 29%; width: 34vw; max-width: 500px; height: 1px; background: currentColor; opacity: .4; transform: rotate(17deg); }
@@ -200,7 +190,7 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 @keyframes bruise-atmosphere { from { transform: rotate(-12deg) translate3d(-4px, 3px, 0); } to { transform: rotate(-5deg) translate3d(12px, -7px, 0); } }
 @keyframes route-atmosphere { from { transform: rotate(-8deg) translateX(-10px); } to { transform: rotate(-8deg) translateX(32px); } }
 @keyframes silhouette-atmosphere { from { transform: skewX(-8deg) translateX(-4px); } to { transform: skewX(-8deg) translateX(15px); } }
-.collection-art { position: absolute; z-index: 0; right: clamp(30px, 10vw, 180px); top: 50%; width: clamp(120px, 18vw, 260px); aspect-ratio: 1; color: var(--signal); opacity: .48; transform: translateY(-50%); pointer-events: none; }
+.collection-art { position: absolute; z-index: 0; right: max(clamp(30px, 10vw, 180px), var(--page-inline)); top: 50%; width: clamp(120px, 18vw, 260px); aspect-ratio: 1; color: var(--signal); opacity: .48; transform: translateY(-50%); pointer-events: none; }
 .collection-art::before, .collection-art::after { content: ""; position: absolute; }
 .collection-art-one { border: 1px solid currentColor; border-radius: 44% 56% 51% 49%; transform: translateY(-50%) rotate(-18deg); }
 .collection-art-one::before { inset: 15% 24% 18% 10%; border: 1px solid currentColor; border-radius: 52% 48% 46% 54%; transform: rotate(29deg); }
@@ -213,7 +203,7 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .collection-art-three::after { left: 19%; top: 37%; width: 62%; height: 54%; border: 1px solid currentColor; border-radius: 48% 52% 16% 16% / 26% 26% 10% 10%; box-shadow: 14px 12px 0 -1px var(--paper), 14px 12px 0 0 currentColor; }
 .collection-hero h1 { position: relative; z-index: 1; max-width: 9ch; margin: 0; padding: 0 0 22px 22px; border-left: 1px solid var(--signal); background: transparent; color: var(--paper-ink); font-size: clamp(54px, 10vw, 144px); line-height: .86; }
 .collection-hero h1::after { content: ""; position: absolute; left: 22px; bottom: 0; width: clamp(46px, 8vw, 105px); height: 2px; background: var(--signal); }
-.poems-section { padding: clamp(52px, 7vw, 95px) clamp(24px, 9vw, 145px) 115px; background: var(--paper); color: var(--paper-ink); }
+.poems-section { padding: clamp(52px, 7vw, 95px) max(clamp(24px, 9vw, 145px), var(--page-inline)) 115px; background: var(--paper); color: var(--paper-ink); }
 .poem-page-list { max-width: 1040px; margin: 0 auto; border-top: 1px solid var(--line); }
 .poem-entry { position: relative; scroll-margin-top: 100px; border-bottom: 1px solid var(--line); }
 .poem-entry::before { content: ""; position: absolute; left: -16px; top: 0; bottom: 0; width: 2px; background: transparent; transition: background .35s; }
@@ -279,7 +269,7 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .poem-entry-body p { margin: 0 0 28px; }
 .poem-entry-body p:last-child { margin-bottom: 0; }
 
-.coming-page { position: relative; isolation: isolate; overflow: hidden; min-height: calc(100vh - 68px); padding: clamp(72px, 10vw, 150px) clamp(24px, 7vw, 110px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(180px, .5fr); align-items: center; gap: clamp(40px, 9vw, 140px); background: var(--signal-dark); color: var(--paper); --pointer-x: 0; --pointer-y: 0; }
+.coming-page { position: relative; isolation: isolate; overflow: hidden; min-height: calc(100vh - 68px); padding: clamp(72px, 10vw, 150px) var(--page-inline); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(180px, .5fr); align-items: center; gap: clamp(40px, 9vw, 140px); background: var(--signal-dark); color: var(--paper); --pointer-x: 0; --pointer-y: 0; }
 .coming-scanline { position: absolute; z-index: 0; left: 0; right: 0; top: -20px; height: 1px; background: var(--paper); opacity: .26; animation: coming-scanline 8s 1s linear infinite; pointer-events: none; }
 .coming-page::before { content: ""; position: absolute; inset: clamp(22px, 4vw, 58px); border: 1px solid rgba(238, 230, 218, .18); pointer-events: none; animation: coming-frame-in 1.4s .15s ease both; }
 .coming-page::after { content: ""; position: absolute; left: 58%; top: -8%; width: 1px; height: 116%; background: rgba(238, 230, 218, .16); transform: rotate(19deg); transform-origin: center; pointer-events: none; animation: coming-registration 1.1s .4s ease both; }
