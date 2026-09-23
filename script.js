@@ -171,17 +171,28 @@ updateProgress();
 
 const revealItems = document.querySelectorAll(".reveal-on-scroll");
 if (revealItems.length) {
+  const revealItem = (item) => item.classList.add("is-revealed");
+  const revealIfOnscreen = () => {
+    revealItems.forEach((item) => {
+      if (item.classList.contains("is-revealed")) return;
+      const rect = item.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) revealItem(item);
+    });
+  };
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    revealItems.forEach((item) => item.classList.add("is-revealed"));
+    revealItems.forEach(revealItem);
   } else {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-revealed");
+        revealItem(entry.target);
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
     revealItems.forEach((item) => revealObserver.observe(item));
+    revealIfOnscreen();
+    window.addEventListener("resize", revealIfOnscreen);
+    window.visualViewport?.addEventListener("resize", revealIfOnscreen);
   }
 }
 
