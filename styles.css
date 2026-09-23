@@ -15,18 +15,29 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: hidden; background: var(--ink); }
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--ink);
   color: var(--paper-ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
+body[data-page="collection"] { background: var(--paper); }
+body[data-page="coming"] { background: var(--signal-dark); }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 101;
+  height: 3px;
+  background: var(--signal);
+  pointer-events: none;
+}
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 button, summary { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
-.site-shell { max-width: 1500px; min-height: 100vh; margin: 0 auto; overflow: hidden; }
+.site-shell { max-width: 1500px; min-height: 100vh; margin: 0 auto; overflow: visible; }
 .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 3px; background: var(--signal); transform: scaleX(0); transform-origin: left center; pointer-events: none; }
 
 .site-header {
@@ -43,6 +54,7 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
   border-bottom: 1px solid rgba(238, 230, 218, .18);
   background: var(--ink);
   color: var(--paper);
+  box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink);
 }
 .wordmark { position: relative; padding-left: 12px; font-family: var(--display); font-size: 16px; font-weight: 500; letter-spacing: -.055em; white-space: nowrap; }
 .wordmark::before { content: ""; position: absolute; left: 0; top: 50%; width: 2px; height: 18px; background: var(--signal); transform: translateY(-50%); }
@@ -154,7 +166,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .preview-poems a { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--paper-muted); font-family: var(--body); font-size: 13px; line-height: 1.3; transition: color .2s, padding-left .2s; }
 .preview-poems a:hover { padding-left: 8px; color: var(--signal-dark); }
 
-.site-footer { min-height: 76px; padding: 0 clamp(24px, 5.4vw, 86px); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; }
+.site-footer { min-height: 76px; padding: 0 clamp(24px, 5.4vw, 86px); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
 .site-footer a { color: var(--signal); }
 
 /* A collection cover becomes a paper page; the surface change is gradual and shared. */
