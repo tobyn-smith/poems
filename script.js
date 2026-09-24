@@ -336,7 +336,7 @@ if (poemList && collection) {
   poemList.innerHTML = collectionPoems.map((poem, collectionIndex) => {
     const index = poems.indexOf(poem);
     const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
-    const echo = collection === "four" ? `<span class="poem-entry-graphic poem-mark-echo mark-${poem.mark}" aria-hidden="true"></span>` : "";
+    const echo = `<span class="poem-entry-graphic poem-mark-echo mark-${poem.mark}" aria-hidden="true"></span>`;
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       ${echo}
       <summary class="poem-entry-heading" aria-label="${poem.number} ${poem.title}">
