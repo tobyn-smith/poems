@@ -108,7 +108,7 @@ const poems = [
     body: ["oversharing on my favourite dating apps\nlike, when did I have my last great nap\nor who let the evil cat out of the hat", "bashing the hierarchy, aged five\nbreaking out in an episode of hives\nor is this another subsequent lie", "get some money and bash the trees\ndriving through my old favourite town\nlooking like some right silly clown"]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "i.", title: "a fool",
+    collection: "four", collectionLabel: "the fool", number: "i.", title: "a fool",
     body: [
       "there is a fool a-loose\nand nobody knows his name\nlife is too big to fail like this\n\"namaste\" they say\nas the fool faces another tragedy",
       "hairs prick up\nas he swerves past\nsixty-five in a fifty-five\nwith so much out there",
@@ -117,7 +117,7 @@ const poems = [
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "ii.", title: "anxious dogs",
+    collection: "four", collectionLabel: "the fool", number: "ii.", title: "anxious dogs",
     body: [
       "sipping straight\nby the river\nwind on my flesh\nthe smell of used wooden chairs\nbuttoned up\nlooking real smart\nready to start the day again",
       "i'm sorry for picking at my t-shirt seams\nit comes out of me like an anxious dog\nwaiting for its owners\nwhile time flees away",
@@ -126,14 +126,14 @@ const poems = [
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "iii.", title: "loud",
+    collection: "four", collectionLabel: "the fool", number: "iii.", title: "loud",
     body: [
       "i keep thinking about the day\nmy mum fractured her arm\nwhile i was at school\nwhile i didn't have a clue\nmy ears jammed by otosclerosis\nno wonder the smallest things\nkept slipping from me",
       "suddenly i'm back on the victoria line\nthe train humming into stillness\neveryone spilling out\neven that kid with her new family dog\nand i can hear it all at once"
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "iv.", title: "my georgia",
+    collection: "four", collectionLabel: "the fool", number: "iv.", title: "my georgia",
     body: [
       "flashlights in the rearview\nfull steam ahead on 75\nwhile the roads are swallowed\nby the vines and green shadow\ngeorgia has always felt\nlike something i loved too late\nsomething i am losing slowly",
       "i love the red clay\nthe sanford parade\nthe heat that clings to my skin\nwhile the trees lean low",
@@ -141,7 +141,7 @@ const poems = [
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "v.", title: "through the meadow",
+    collection: "four", collectionLabel: "the fool", number: "v.", title: "through the meadow",
     body: [
       "the rain beating down\non the crown of my hair\nmy tear ducts feel heavy today",
       "i shift through the long grass\nthe footprints of the past\netched behind me",
@@ -150,21 +150,21 @@ const poems = [
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "vi.", title: "come and go",
+    collection: "four", collectionLabel: "the fool", number: "vi.", title: "come and go",
     body: [
       "sometimes i wish\nthat dogs had retirement homes\nor if i had the ability to clone you\ni miss that wet nose\nrubbing against my size small clothes\nit was an honour to be your person\nand what a privilege it was",
       "sometimes when i lose hope\ni remind myself of you\nand while the grass died with you\nthe older i get\ni realise it comes and goes\nand the seasons don't wait up\nfor me\nor you"
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "vii.", title: "remember me?",
+    collection: "four", collectionLabel: "the fool", number: "vii.", title: "remember me?",
     body: [
       "suddenly the linen etched on my skin\ndoesn't matter any more\nthey say it fades\nyou said you miss me\nguess that didn't stop you from making plans\nor filling the spaces\ni left behind",
       "i wonder if you notice\nhow quiet it gets\nwhen there is no one\nleft to remember me"
     ]
   },
   {
-    collection: "four", collectionLabel: "collection four", number: "viii.", title: "dream on",
+    collection: "four", collectionLabel: "the fool", number: "viii.", title: "dream on",
     body: [
       "woke up at 7:51 am this morning\nmaybe something will save us\nsomething chose to live forever\nlaugh at heresy\nbecause something found this creature\nin the depths of hell\nand brought it up into the morning\ntaught it to move around\nlive freely",
       "we don't know what's over this hill\nbut the sky is there\nand there is more of it\nthan we thought",
@@ -192,7 +192,7 @@ const poemMarks = {
 };
 
 const romanNumerals = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix."];
-const collectionLabels = { one: "bruises and nostalgia", two: "wonderlust", three: "my silhouette", four: "collection four" };
+const collectionLabels = { one: "bruises and nostalgia", two: "wonderlust", three: "my silhouette", four: "the fool" };
 const editorialPosition = new Map();
 Object.entries(editorialOrder).forEach(([collectionName, titles]) => {
   titles.forEach((title, index) => editorialPosition.set(title, { collection: collectionName, index }));

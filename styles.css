@@ -305,7 +305,7 @@ body[data-collection="four"] .collection-hero::after { content: none; }
 }
 .collection-hero-four h1 {
   z-index: 2;
-  max-width: 11ch;
+  max-width: 10ch;
   color: var(--paper);
   font-size: clamp(72px, 11vw, 176px);
   text-shadow: 0 18px 40px rgba(0, 0, 0, .45);
@@ -494,14 +494,14 @@ body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
   .collection-art-one { transform: rotate(-14deg) scale(.88); }
   .collection-art-three { transform: skewY(-10deg) scale(.88); }
   .collection-hero-four { min-height: 640px; padding-bottom: 92px; }
-  .collection-hero-four h1 { max-width: 8ch; font-size: clamp(56px, 16vw, 92px); }
+  .collection-hero-four h1 { max-width: 10ch; font-size: clamp(56px, 16vw, 92px); }
   .four-horizon::before { height: 54px; }
   .four-horizon::after { height: 72px; }
   .collection-art-four { top: auto; right: 18px; bottom: 72px; width: 108px; opacity: .9; transform: none; }
   body[data-collection="four"] .poems-section { margin-top: -28px; border-radius: 22px 22px 0 0; }
   body[data-collection="four"] .poem-mark-echo { display: none; }
   .collection-hero h1 { max-width: 9ch; padding: 0 0 17px 14px; font-size: clamp(48px, 15vw, 86px); }
-  body[data-collection="four"] .collection-hero h1 { max-width: 8ch; color: var(--paper); font-size: clamp(56px, 16vw, 92px); }
+  body[data-collection="four"] .collection-hero h1 { max-width: 10ch; color: var(--paper); font-size: clamp(56px, 16vw, 92px); }
   .collection-hero h1::after { left: 14px; width: 54px; }
   .poems-section { padding: 50px 22px 80px; }
   .poem-entry { scroll-margin-top: 84px; }
