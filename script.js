@@ -285,7 +285,7 @@ if (menuToggle && header) {
   });
 }
 
-const parallaxSurface = document.querySelector(".coming-page, .collection-banner");
+const parallaxSurface = document.querySelector(".coming-page, .collection-banner, .home-hero");
 if (parallaxSurface && !prefersReducedMotion) {
   let targetX = 0;
   let targetY = 0;
