@@ -287,30 +287,67 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .poem-entry-body p { margin: 0 0 28px; }
 .poem-entry-body p:last-child { margin-bottom: 0; }
 
+body[data-collection="one"] { background: #14080c; }
+body[data-collection="two"] { background: #10141c; }
+body[data-collection="three"] { background: #0c0b10; }
 body[data-collection="four"] { background: #07060a; }
+body[data-collection="one"] .collection-hero::before,
+body[data-collection="one"] .collection-hero::after,
+body[data-collection="two"] .collection-hero::before,
+body[data-collection="two"] .collection-hero::after,
+body[data-collection="three"] .collection-hero::before,
+body[data-collection="three"] .collection-hero::after,
 body[data-collection="four"] .collection-hero::before,
 body[data-collection="four"] .collection-hero::after { content: none; }
-.collection-hero-four {
+.collection-banner {
   min-height: min(880px, calc(100vh - 68px));
   display: grid;
   align-items: center;
   padding-bottom: clamp(120px, 14vh, 190px);
   color: var(--paper);
+  --pointer-x: 0;
+  --pointer-y: 0;
+}
+.collection-hero-one {
+  background:
+    radial-gradient(ellipse at 74% 28%, rgba(118, 38, 49, .62), transparent 42%),
+    radial-gradient(ellipse at 18% 78%, rgba(181, 44, 35, .2), transparent 34%),
+    #14080c;
+}
+.collection-hero-two {
+  background:
+    radial-gradient(ellipse at 76% 58%, rgba(179, 74, 37, .42), transparent 30%),
+    radial-gradient(ellipse at 16% 18%, rgba(90, 122, 148, .28), transparent 36%),
+    #10141c;
+}
+.collection-hero-three {
+  background:
+    radial-gradient(ellipse at 72% 36%, rgba(238, 230, 218, .1), transparent 28%),
+    radial-gradient(ellipse at 24% 80%, rgba(95, 32, 48, .35), transparent 34%),
+    #0c0b10;
+}
+.collection-hero-four {
   background:
     radial-gradient(ellipse at 72% 18%, rgba(181, 44, 35, .28), transparent 36%),
     radial-gradient(ellipse at 18% 78%, rgba(181, 44, 35, .12), transparent 32%),
     #07060a;
-  --pointer-x: 0;
-  --pointer-y: 0;
 }
-.collection-hero-four h1 {
+.collection-banner h1 {
   z-index: 2;
   max-width: 10ch;
   color: var(--paper);
-  font-size: clamp(72px, 11vw, 176px);
-  text-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+  font-size: clamp(64px, 9vw, 148px);
+  text-shadow: 0 18px 40px rgba(0, 0, 0, .5);
 }
-.four-field {
+.collection-hero-two h1,
+.collection-hero-four h1 { font-size: clamp(72px, 11vw, 176px); }
+.collection-banner .collection-art {
+  z-index: 1;
+  color: rgba(238, 230, 218, .78);
+  opacity: .82;
+}
+.collection-hero-three .collection-art-three::after { box-shadow: 14px 12px 0 -1px #0c0b10, 14px 12px 0 0 currentColor; }
+.banner-field {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -318,6 +355,131 @@ body[data-collection="four"] .collection-hero::after { content: none; }
   pointer-events: none;
   transform: translate3d(calc(var(--pointer-x) * .12px), calc(var(--pointer-y) * .1px), 0);
 }
+.one-orb {
+  position: absolute;
+  right: 10%;
+  top: 12%;
+  width: min(36vw, 440px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(238, 230, 218, .24);
+  border-radius: 48% 52% 43% 57%;
+  animation: one-orb 14s ease-in-out infinite alternate;
+}
+.one-orb::before,
+.one-orb::after { content: ""; position: absolute; border: 1px solid rgba(181, 44, 35, .7); border-radius: 50%; }
+.one-orb::before { inset: 16% 18% 18% 14%; }
+.one-orb::after { inset: 34% 32%; border-color: rgba(238, 230, 218, .4); }
+.one-window {
+  position: absolute;
+  left: 52%;
+  bottom: 20%;
+  width: 86px;
+  height: 112px;
+  border: 1px solid rgba(238, 230, 218, .5);
+}
+.one-window::before,
+.one-window::after { content: ""; position: absolute; background: rgba(238, 230, 218, .5); }
+.one-window::before { left: 50%; top: 0; bottom: 0; width: 1px; }
+.one-window::after { top: 42%; left: 0; right: 0; height: 1px; }
+.one-wick {
+  position: absolute;
+  left: calc(52% + 38px);
+  bottom: 31%;
+  width: 8px;
+  height: 18px;
+  border: 1px solid rgba(238, 230, 218, .75);
+  border-radius: 4px 4px 1px 1px;
+}
+.one-wick::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: -9px;
+  width: 4px;
+  height: 8px;
+  border: 1px solid var(--signal);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 14px rgba(181, 44, 35, .9);
+}
+.two-horizon,
+.two-route,
+.two-bird,
+.three-window,
+.three-skyline { position: absolute; }
+.two-horizon {
+  left: -8%;
+  right: -8%;
+  bottom: 22%;
+  height: 1px;
+  background: rgba(179, 74, 37, .85);
+  box-shadow: 0 0 22px rgba(179, 74, 37, .4);
+}
+.two-horizon::before,
+.two-horizon::after { content: ""; position: absolute; bottom: 0; border: 1px solid rgba(238, 230, 218, .28); border-bottom: 0; }
+.two-horizon::before { left: 8%; width: 30%; height: 74px; border-radius: 50% 46% 0 0; }
+.two-horizon::after { right: 7%; width: 38%; height: 118px; border-radius: 46% 54% 0 0; }
+.two-route {
+  left: 46%;
+  bottom: 0;
+  width: min(24vw, 240px);
+  height: 22%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, rgba(238, 230, 218, .14), transparent 84%);
+  clip-path: polygon(44% 0, 56% 0, 100% 100%, 0 100%);
+}
+.two-route::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to top, var(--signal), transparent);
+}
+.two-bird {
+  left: 28%;
+  top: 20%;
+  width: 18px;
+  height: 12px;
+  border-bottom: 1px solid rgba(238, 230, 218, .86);
+  border-radius: 0 0 16px 16px;
+  transform: rotate(-16deg);
+  animation: two-bird 8s ease-in-out infinite alternate;
+}
+.two-bird::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 0;
+  width: 18px;
+  height: 12px;
+  border-bottom: 1px solid rgba(238, 230, 218, .86);
+  border-radius: 0 0 16px 16px;
+}
+.three-window {
+  right: 16%;
+  top: 14%;
+  width: min(16vw, 168px);
+  height: min(26vw, 248px);
+  border: 1px solid rgba(238, 230, 218, .62);
+  background: linear-gradient(180deg, rgba(238, 230, 218, .16), rgba(181, 44, 35, .12));
+  box-shadow: 0 0 48px rgba(238, 230, 218, .08);
+}
+.three-window::before,
+.three-window::after { content: ""; position: absolute; background: rgba(238, 230, 218, .45); }
+.three-window::before { left: 50%; top: 7%; bottom: 7%; width: 1px; }
+.three-window::after { top: 46%; left: 7%; right: 7%; height: 1px; }
+.three-skyline {
+  left: 4%;
+  right: 4%;
+  bottom: 16%;
+  height: 1px;
+  background: rgba(238, 230, 218, .38);
+}
+.three-skyline::before,
+.three-skyline::after { content: ""; position: absolute; bottom: 0; border: 1px solid rgba(238, 230, 218, .42); border-bottom: 0; }
+.three-skyline::before { left: 6%; width: 42px; height: 86px; box-shadow: 64px 22px 0 -1px #0c0b10, 64px 22px 0 0 rgba(238, 230, 218, .42), 118px -8px 0 -1px #0c0b10, 118px -8px 0 0 rgba(238, 230, 218, .42); }
+.three-skyline::after { right: 8%; width: 54px; height: 64px; box-shadow: -78px 16px 0 -1px #0c0b10, -78px 16px 0 0 rgba(238, 230, 218, .42); }
 .four-stars {
   position: absolute;
   inset: -8% -4% auto;
@@ -382,6 +544,34 @@ body[data-collection="four"] .collection-hero::after { content: none; }
 .four-wanderer::after { content: ""; position: absolute; }
 .four-wanderer::before { left: 4px; top: 0; width: 8px; height: 8px; border: 1px solid rgba(238, 230, 218, .86); border-radius: 50%; }
 .four-wanderer::after { left: 8px; top: 10px; width: 1px; height: 13px; background: rgba(238, 230, 218, .86); box-shadow: -5px 13px 0 rgba(238, 230, 218, .86), 5px 13px 0 rgba(238, 230, 218, .86); }
+.four-bell {
+  position: absolute;
+  right: 16%;
+  top: 11%;
+  width: 46px;
+  height: 54px;
+  color: rgba(238, 230, 218, .92);
+  transform-origin: 23px 0;
+  animation: four-bell 4.6s ease-in-out infinite alternate;
+}
+.four-bell::before,
+.four-bell::after { content: ""; position: absolute; box-sizing: border-box; }
+.four-bell::before {
+  left: 7px;
+  top: 12px;
+  width: 32px;
+  height: 26px;
+  border: 1px solid currentColor;
+  border-radius: 4px 4px 16px 16px;
+}
+.four-bell::after {
+  left: 22px;
+  top: 0;
+  width: 1px;
+  height: 14px;
+  background: currentColor;
+  box-shadow: -8px 4px 0 0 currentColor, 8px 4px 0 0 currentColor, 0 34px 0 3px currentColor;
+}
 .collection-art-four {
   z-index: 1;
   border: 0;
@@ -396,8 +586,14 @@ body[data-collection="four"] .collection-hero::after { content: none; }
 .collection-art-four span::after { content: ""; position: absolute; }
 .collection-art-four span::before { left: 34%; top: 22%; width: 1px; height: 48%; background: currentColor; transform: rotate(18deg); }
 .collection-art-four span::after { right: 16%; bottom: 18%; width: 34%; height: 22%; border: 1px solid currentColor; border-bottom: 0; border-radius: 50% 50% 0 0; }
+@keyframes one-orb { from { transform: rotate(-18deg) translate3d(-8px, 4px, 0); } to { transform: rotate(-8deg) translate3d(10px, -8px, 0); } }
+@keyframes two-bird { from { transform: translate3d(-16px, 4px, 0) rotate(-16deg); } to { transform: translate3d(22px, -12px, 0) rotate(8deg); } }
 @keyframes four-stars { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-18px, 10px, 0); } }
 @keyframes four-walk { from { transform: translate3d(-36px, 10px, 0); } to { transform: translate3d(28px, -4px, 0); } }
+@keyframes four-bell { from { transform: rotate(-11deg); } to { transform: rotate(13deg); } }
+body[data-collection="one"] .poems-section,
+body[data-collection="two"] .poems-section,
+body[data-collection="three"] .poems-section,
 body[data-collection="four"] .poems-section {
   position: relative;
   z-index: 1;
@@ -493,15 +689,30 @@ body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
   .collection-art { top: auto; right: 18px; bottom: 18px; width: 108px; opacity: .78; filter: drop-shadow(0 0 10px rgba(181, 44, 35, .24)); transform: scale(.88); }
   .collection-art-one { transform: rotate(-14deg) scale(.88); }
   .collection-art-three { transform: skewY(-10deg) scale(.88); }
-  .collection-hero-four { min-height: 640px; padding-bottom: 92px; }
-  .collection-hero-four h1 { max-width: 10ch; font-size: clamp(56px, 16vw, 92px); }
+  .collection-banner { min-height: 640px; padding-bottom: 92px; }
+  .collection-banner h1 { max-width: 10ch; color: var(--paper); font-size: clamp(52px, 14vw, 88px); }
+  .collection-banner .collection-art { top: auto; right: 18px; bottom: 72px; width: 108px; opacity: .9; transform: none; }
+  .collection-hero-one .collection-art-one { transform: rotate(-14deg); }
+  .collection-hero-three .collection-art-three { transform: skewY(-8deg); }
+  .one-orb { width: 180px; top: 8%; right: -20px; }
+  .one-window { width: 64px; height: 84px; left: auto; right: 28px; bottom: 24%; }
+  .one-wick { left: auto; right: 54px; bottom: 33%; }
+  .two-horizon::before { height: 48px; }
+  .two-horizon::after { height: 72px; }
+  .three-window { width: 88px; height: 128px; right: 16px; top: 16%; }
+  .three-skyline::before { height: 52px; box-shadow: 40px 14px 0 -1px #0c0b10, 40px 14px 0 0 rgba(238, 230, 218, .42); }
+  .three-skyline::after { height: 40px; box-shadow: none; }
   .four-horizon::before { height: 54px; }
   .four-horizon::after { height: 72px; }
+  .four-bell { right: 22px; top: 16px; width: 36px; height: 44px; }
   .collection-art-four { top: auto; right: 18px; bottom: 72px; width: 108px; opacity: .9; transform: none; }
+  body[data-collection="one"] .poems-section,
+  body[data-collection="two"] .poems-section,
+  body[data-collection="three"] .poems-section,
   body[data-collection="four"] .poems-section { margin-top: -28px; border-radius: 22px 22px 0 0; }
   body[data-collection="four"] .poem-mark-echo { display: none; }
   .collection-hero h1 { max-width: 9ch; padding: 0 0 17px 14px; font-size: clamp(48px, 15vw, 86px); }
-  body[data-collection="four"] .collection-hero h1 { max-width: 10ch; color: var(--paper); font-size: clamp(56px, 16vw, 92px); }
+  .collection-banner h1 { max-width: 10ch; color: var(--paper); font-size: clamp(52px, 14vw, 88px); }
   .collection-hero h1::after { left: 14px; width: 54px; }
   .poems-section { padding: 50px 22px 80px; }
   .poem-entry { scroll-margin-top: 84px; }
