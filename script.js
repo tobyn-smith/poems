@@ -335,7 +335,10 @@ if (poemList && collection) {
     .filter(Boolean);
   poemList.innerHTML = collectionPoems.map((poem, collectionIndex) => {
     const index = poems.indexOf(poem);
-    const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
+    const stanzas = poem.body.map((stanza) => {
+      const lines = stanza.split("\n").map((line) => `<span class="poem-line">${line}</span>`).join("");
+      return `<p>${lines}</p>`;
+    }).join("");
     const echo = `<span class="poem-entry-graphic poem-mark-echo mark-${poem.mark}" aria-hidden="true"></span>`;
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       ${echo}
@@ -371,15 +374,40 @@ if (poemList && collection) {
   window.addEventListener("hashchange", openFromHash);
   openFromHash();
 
+  const readingHead = document.createElement("div");
+  readingHead.className = "reading-head";
+  readingHead.setAttribute("aria-hidden", "true");
+  readingHead.innerHTML = `<span class="reading-collection">${collectionLabels[collection] || ""}</span><span class="reading-poem"></span>`;
+  document.body.append(readingHead);
+  const readingPoem = readingHead.querySelector(".reading-poem");
+  const poemsSection = document.querySelector(".poems-section");
+
+  const syncReadingHead = () => {
+    const headerBottom = header.getBoundingClientRect().bottom;
+    const bounds = poemsSection.getBoundingClientRect();
+    const current = [...poemList.querySelectorAll(".poem-entry")].find((entry) => entry.getBoundingClientRect().bottom > headerBottom + 36);
+    const reading = Boolean(current) && bounds.top <= headerBottom + 8 && bounds.bottom > headerBottom + 90;
+    document.body.classList.toggle("is-reading", reading);
+    readingHead.style.top = `${Math.round(headerBottom)}px`;
+    if (!current) return;
+    const number = current.querySelector(".poem-entry-number").textContent;
+    const title = current.querySelector("h2").textContent;
+    readingPoem.textContent = `${number}  ${title}`;
+  };
+
   const poemEntries = [...poemList.querySelectorAll(".poem-entry")];
   if ("IntersectionObserver" in window) {
     const readingObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting));
+      syncReadingHead();
     }, { rootMargin: "-24% 0px -58% 0px", threshold: 0 });
     poemEntries.forEach((entry) => readingObserver.observe(entry));
   } else if (poemEntries[0]) {
     poemEntries[0].classList.add("is-active");
   }
+  window.addEventListener("scroll", syncReadingHead, { passive: true });
+  window.addEventListener("resize", syncReadingHead);
+  syncReadingHead();
 }
 
 document.addEventListener("keydown", (event) => {
