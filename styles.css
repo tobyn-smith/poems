@@ -41,7 +41,7 @@ a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transpar
 button, summary { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
 ::selection { background: var(--signal); color: var(--paper); }
-.site-shell { width: 100%; max-width: none; min-height: 100vh; margin: 0; overflow: hidden; }
+.site-shell { width: 100%; max-width: none; min-height: 100vh; margin: 0; overflow: clip; }
 .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 3px; background: var(--signal); transform: scaleX(0); transform-origin: left center; pointer-events: none; }
 
 .site-header {
@@ -280,7 +280,7 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .collection-hero h1::after { content: ""; position: absolute; left: 22px; bottom: 0; width: clamp(46px, 8vw, 105px); height: 2px; background: var(--signal); }
 .poems-section { padding: clamp(52px, 7vw, 95px) max(clamp(24px, 9vw, 145px), var(--page-inline)) 115px; background: var(--paper); color: var(--paper-ink); }
 .poem-page-list { max-width: 1040px; margin: 0 auto; border-top: 1px solid var(--line); }
-.poem-entry { position: relative; scroll-margin-top: 100px; border-bottom: 1px solid var(--line); }
+.poem-entry { position: relative; scroll-margin-top: 120px; border-bottom: 1px solid var(--line); }
 .poem-entry::before { content: ""; position: absolute; left: -16px; top: 0; bottom: 0; width: 2px; background: transparent; transition: background .35s; }
 .poem-entry.is-active::before { background: var(--signal); }
 .poem-entry-heading { position: relative; z-index: 1; display: grid; width: 100%; grid-template-columns: 45px 38px minmax(0, 1fr); gap: 15px; align-items: center; padding: 25px 0 22px; border: 0; background: transparent; color: var(--paper-ink); text-align: left; cursor: pointer; list-style: none; transition: color .25s; }
@@ -359,8 +359,36 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .mark-horizon::before { left: 10px; top: 3px; width: 10px; height: 10px; border: 1px solid currentColor; border-radius: 50%; }
 .mark-horizon::after { left: 3px; bottom: 5px; width: 24px; height: 9px; border-top: 1px solid currentColor; border-radius: 50%; }
 .poem-entry-body { position: relative; z-index: 1; max-width: 64ch; padding: 0 0 43px 102px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
+.poem-entry[open] .poem-entry-body { animation: poem-open .5s ease both; }
+@keyframes poem-open { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .poem-entry-body p { margin: 0 0 28px; }
 .poem-entry-body p:last-child { margin-bottom: 0; }
+.poem-line { display: block; padding-left: 1.15em; text-indent: -1.15em; }
+.reading-head {
+  position: fixed;
+  z-index: 49;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 9px var(--page-inline) 8px;
+  border-bottom: 1px solid rgba(181, 44, 35, .55);
+  background: #f6efe6;
+  color: var(--paper-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  box-shadow: -50vmax 0 0 #f6efe6, 50vmax 0 0 #f6efe6;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+body.is-reading .reading-head { transform: none; opacity: 1; }
+.reading-collection { flex: none; }
+.reading-poem { min-width: 0; overflow: hidden; color: var(--signal); text-overflow: ellipsis; white-space: nowrap; }
 
 body[data-collection="one"] { background: #14080c; }
 body[data-collection="two"] { background: #10141c; }
@@ -802,6 +830,7 @@ body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90d
   .poem-entry-heading h2 { font-size: 22px; }
   .poem-entry-graphic { width: 28px; height: 28px; }
   .poem-entry-body { padding: 0 0 35px 76px; font-size: 14px; line-height: 1.82; }
+  .reading-collection { display: none; }
   .coming-page { min-height: max(calc(100vh - 68px), 620px); grid-template-columns: 1fr; align-content: center; gap: 54px; padding-top: 67px; padding-bottom: 90px; }
   .coming-page::before { inset: 18px; }
   .coming-page::after { left: 78%; top: -4%; height: 108%; transform: rotate(14deg); }
