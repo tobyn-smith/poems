@@ -40,6 +40,7 @@ body::before {
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 button, summary { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+::selection { background: var(--signal); color: var(--paper); }
 .site-shell { width: 100%; max-width: none; min-height: 100vh; margin: 0; overflow: hidden; }
 .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 100; height: 3px; background: var(--signal); transform: scaleX(0); transform-origin: left center; pointer-events: none; }
 
@@ -154,22 +155,30 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .home-copy h1 .title-poems { margin-left: .09em; color: var(--signal); transition: transform .35s ease, letter-spacing .35s ease; }
 .home-copy h1:hover .title-poems { transform: translateX(.045em); letter-spacing: -.035em; }
 .home-copy p { max-width: 56ch; margin: clamp(48px, 5vw, 78px) 0 0; color: rgba(238, 230, 218, .68); font-size: 15px; line-height: 1.75; }
-.home-links { border-top: 1px solid rgba(238, 230, 218, .3); }
+.home-links { border-top: 1px solid rgba(238, 230, 218, .3); counter-reset: contents; }
 .home-links a {
   min-height: 58px;
   padding: 14px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2.4em minmax(0, 1fr) auto;
+  column-gap: 10px;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
   border-bottom: 1px solid rgba(238, 230, 218, .3);
   color: var(--paper);
   font-family: var(--body);
   font-size: clamp(16px, 1.7vw, 23px);
   letter-spacing: -.04em;
-  transition: color .2s, padding-left .2s;
+  transition: color .2s;
 }
-.home-links a:hover { padding-left: 11px; color: var(--signal); }
+.home-links a::before {
+  content: counter(contents, lower-roman) ".";
+  counter-increment: contents;
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.home-links a:hover { color: var(--signal); }
 .edition-mark,
 .home-links small,
 .preview-title small,
@@ -235,7 +244,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .preview-poems a { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--paper-muted); font-family: var(--body); font-size: 13px; line-height: 1.3; transition: color .2s, padding-left .2s; }
 .preview-poems a:hover { padding-left: 8px; color: var(--signal-dark); }
 
-.site-footer { min-height: 76px; padding: 0 var(--page-inline); display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
+.site-footer { min-height: 76px; padding: 0 var(--page-inline); display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(181, 44, 35, .7); background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
 .site-footer a { color: var(--signal); }
 
 /* A collection cover becomes a paper page; the surface change is gradual and shared. */
@@ -274,14 +283,16 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .poem-entry { position: relative; scroll-margin-top: 100px; border-bottom: 1px solid var(--line); }
 .poem-entry::before { content: ""; position: absolute; left: -16px; top: 0; bottom: 0; width: 2px; background: transparent; transition: background .35s; }
 .poem-entry.is-active::before { background: var(--signal); }
-.poem-entry-heading { display: grid; width: 100%; grid-template-columns: 45px 38px minmax(0, 1fr); gap: 15px; align-items: center; padding: 25px 0 22px; border: 0; background: transparent; color: var(--paper-ink); text-align: left; cursor: pointer; list-style: none; }
+.poem-entry-heading { position: relative; z-index: 1; display: grid; width: 100%; grid-template-columns: 45px 38px minmax(0, 1fr); gap: 15px; align-items: center; padding: 25px 0 22px; border: 0; background: transparent; color: var(--paper-ink); text-align: left; cursor: pointer; list-style: none; transition: color .25s; }
 .poem-entry-heading::-webkit-details-marker { display: none; }
 .poem-entry-heading:hover { color: var(--signal-dark); }
-.poem-entry-heading h2 { margin: 0; font-size: clamp(24px, 3.2vw, 44px); line-height: 1.08; }
+.poem-entry-heading h2 { margin: 0; font-size: clamp(24px, 3.2vw, 44px); line-height: 1.08; transition: transform .25s ease; }
+.poem-entry-heading:hover h2 { transform: translateX(6px); }
+.poem-entry[open] { background: linear-gradient(90deg, rgba(181, 44, 35, .065), transparent 46%); }
 .poem-entry-number { color: var(--paper-muted); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; transition: color .35s; }
 .poem-entry.is-active .poem-entry-number { color: var(--signal); }
 .poem-entry-graphic { position: relative; width: 30px; height: 30px; color: var(--paper-muted); opacity: .52; transition: color .35s, opacity .35s, transform .35s; }
-.poem-entry.is-active .poem-entry-graphic { color: var(--signal); opacity: 1; transform: scale(1.08); }
+.poem-entry.is-active .poem-entry-graphic:not(.poem-mark-echo) { color: var(--signal); opacity: 1; transform: scale(1.08); }
 .poem-entry-graphic::before, .poem-entry-graphic::after { content: ""; position: absolute; box-sizing: border-box; }
 .mark-heart::before { left: 7px; top: 8px; width: 16px; height: 16px; border-left: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(-45deg); }
 .mark-heart::after { left: 7px; top: 4px; width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; box-shadow: 8px 0 0 -1px var(--paper), 8px 0 0 0 currentColor; }
@@ -347,7 +358,7 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .mark-remember::after { left: 5px; top: 13px; width: 20px; height: 1px; background: currentColor; transform: rotate(-7deg); }
 .mark-horizon::before { left: 10px; top: 3px; width: 10px; height: 10px; border: 1px solid currentColor; border-radius: 50%; }
 .mark-horizon::after { left: 3px; bottom: 5px; width: 24px; height: 9px; border-top: 1px solid currentColor; border-radius: 50%; }
-.poem-entry-body { max-width: 64ch; padding: 0 0 43px 102px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
+.poem-entry-body { position: relative; z-index: 1; max-width: 64ch; padding: 0 0 43px 102px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
 .poem-entry-body p { margin: 0 0 28px; }
 .poem-entry-body p:last-child { margin-bottom: 0; }
 
@@ -672,7 +683,7 @@ body[data-collection="four"] .poems-section {
 }
 body[data-collection="four"] .poem-entry-heading h2 { font-size: clamp(28px, 3.5vw, 52px); }
 body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90deg, rgba(181, 44, 35, .07), transparent 46%); }
-body[data-collection="four"] .poem-mark-echo {
+.poem-mark-echo {
   position: absolute;
   top: 18px;
   right: 4px;
@@ -686,8 +697,8 @@ body[data-collection="four"] .poem-mark-echo {
   pointer-events: none;
   transition: opacity .45s ease, transform .45s ease;
 }
-body[data-collection="four"] .poem-entry[open] .poem-mark-echo,
-body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
+.poem-entry[open] .poem-mark-echo,
+.poem-entry.is-active .poem-mark-echo {
   color: var(--signal);
   opacity: .62;
   transform: scale(2.45);
@@ -780,7 +791,7 @@ body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
   body[data-collection="two"] .poems-section,
   body[data-collection="three"] .poems-section,
   body[data-collection="four"] .poems-section { margin-top: -28px; border-radius: 22px 22px 0 0; }
-  body[data-collection="four"] .poem-mark-echo { display: none; }
+  .poem-mark-echo { display: none; }
   .collection-hero h1 { max-width: 9ch; padding: 0 0 17px 14px; font-size: clamp(48px, 15vw, 86px); }
   .collection-banner h1 { max-width: 10ch; color: var(--paper); font-size: clamp(52px, 14vw, 88px); }
   .collection-hero h1::after { left: 14px; width: 54px; }
