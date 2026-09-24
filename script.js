@@ -285,9 +285,7 @@ if (menuToggle && header) {
   });
 }
 
-const comingPage = document.querySelector(".coming-page");
-const fourHero = document.querySelector(".collection-hero-four");
-const parallaxSurface = comingPage || fourHero;
+const parallaxSurface = document.querySelector(".coming-page, .collection-banner");
 if (parallaxSurface && !prefersReducedMotion) {
   let targetX = 0;
   let targetY = 0;
@@ -360,9 +358,14 @@ if (poemList && collection) {
     }
   };
 
+  let readyForHash = false;
+  const armHash = () => { readyForHash = true; };
+  window.addEventListener("pointerdown", armHash, { once: true });
+  window.addEventListener("keydown", armHash, { once: true });
   poemList.querySelectorAll("details").forEach((entry) => {
     entry.addEventListener("toggle", () => {
-      if (entry.open) history.replaceState(null, "", `#${entry.id}`);
+      if (!readyForHash || !entry.open) return;
+      history.replaceState(null, "", `#${entry.id}`);
     });
   });
   window.addEventListener("hashchange", openFromHash);
