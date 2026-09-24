@@ -111,18 +111,18 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
   position: absolute;
   left: -8%;
   right: -8%;
-  bottom: 16%;
+  bottom: 0;
   height: 1px;
   background: rgba(181, 44, 35, .75);
   box-shadow: 0 0 22px rgba(181, 44, 35, .4);
 }
 .home-horizon::before,
 .home-horizon::after { content: ""; position: absolute; bottom: 0; border: 1px solid rgba(238, 230, 218, .22); border-bottom: 0; }
-.home-horizon::before { left: 8%; width: 28%; height: 70px; border-radius: 50% 46% 0 0; }
-.home-horizon::after { right: 10%; width: 34%; height: 108px; border-radius: 48% 52% 0 0; }
-.home-hero::before { content: ""; position: absolute; left: 48%; top: 15%; width: clamp(180px, 22vw, 340px); aspect-ratio: 1; border: 1px solid rgba(181, 44, 35, .13); border-radius: 48% 52% 46% 54%; transform: rotate(-18deg); animation: ink-orbit 18s ease-in-out infinite alternate; pointer-events: none; }
-.home-hero::after { content: ""; position: absolute; right: var(--page-inline); bottom: 0; width: 1px; height: 44%; background: var(--signal); opacity: .8; transform-origin: bottom; animation: thread-draw 1.2s .35s cubic-bezier(.2,.8,.2,1) both; }
-.home-opening-mark { position: absolute; z-index: 0; left: 48%; top: 19%; width: clamp(210px, 29vw, 430px); aspect-ratio: 1.55; border: 1px solid rgba(181, 44, 35, .26); opacity: 0; transform: rotate(-13deg) scale(.92); animation: opening-mark-in 1.5s .08s cubic-bezier(.2,.8,.2,1) forwards, opening-mark-drift 16s 1.6s ease-in-out infinite alternate; pointer-events: none; }
+.home-horizon::before { left: 8%; width: 26%; height: 54px; border-radius: 50% 46% 0 0; }
+.home-horizon::after { right: 18%; width: 30%; height: 78px; border-radius: 48% 52% 0 0; }
+.home-hero::before,
+.home-hero::after { content: none; }
+.home-opening-mark { position: absolute; z-index: 0; left: auto; right: max(6vw, var(--page-inline)); top: 8%; width: clamp(150px, 16vw, 260px); aspect-ratio: 1.55; border: 1px solid rgba(181, 44, 35, .34); opacity: 0; transform: rotate(-13deg) scale(.92); animation: opening-mark-in 1.5s .08s cubic-bezier(.2,.8,.2,1) forwards, opening-mark-drift 16s 1.6s ease-in-out infinite alternate; pointer-events: none; }
 .home-opening-mark::before, .home-opening-mark::after, .home-opening-mark span::before, .home-opening-mark span::after { content: ""; position: absolute; box-sizing: border-box; }
 .home-opening-mark::before { inset: 13% 18%; border: 1px solid rgba(238, 230, 218, .24); transform: rotate(19deg); }
 .home-opening-mark::after { left: -10%; right: 7%; top: 49%; height: 1px; background: var(--signal); transform: rotate(-7deg); transform-origin: center; }
@@ -170,28 +170,29 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   transition: color .2s, padding-left .2s;
 }
 .home-links a:hover { padding-left: 11px; color: var(--signal); }
-.edition-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-  color: var(--signal);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .16em;
-  line-height: 1;
-}
-.edition-mark::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+.edition-mark,
 .home-links small,
 .preview-title small,
 .site-nav small {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: 5px 8px 4px;
+  border: 1px solid currentColor;
+  background: rgba(7, 6, 10, .72);
   color: var(--signal);
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: .12em;
+  font-style: normal;
+  letter-spacing: .16em;
   line-height: 1;
+  white-space: nowrap;
 }
-.site-nav small { margin-left: 7px; font-size: 8px; letter-spacing: .08em; }
+.home-links small { flex: none; background: #07060a; }
+.preview-title small { background: var(--paper); }
+.site-nav small { margin-left: 8px; padding: 3px 5px 2px; font-size: 8px; letter-spacing: .12em; background: transparent; }
+.coming-cover .edition-mark { margin: 0 0 22px; color: var(--paper); border-color: rgba(238, 230, 218, .72); background: transparent; }
 
 /* The paper sheet overlaps the cover so the change of surface feels physical. */
 .collection-preview {
@@ -396,8 +397,7 @@ body[data-collection="four"] .collection-hero::after { content: none; }
     #07060a;
 }
 .banner-title { position: relative; z-index: 2; }
-.collection-banner .edition-mark { margin: 0 0 18px; }
-.coming-cover .edition-mark { margin: 0 0 22px; color: var(--paper); }
+.collection-banner .edition-mark { margin: 0 0 20px; background: rgba(7, 6, 10, .55); }
 .collection-banner h1 {
   z-index: 2;
   max-width: 10ch;
@@ -729,8 +729,8 @@ body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
   .site-nav { grid-column: 1 / -1; grid-row: 2; display: none; justify-content: flex-start; padding: 14px 0 8px; border-top: 1px solid rgba(238, 230, 218, .18); }
   .site-header.nav-open .site-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
   .site-header.nav-open .site-nav a { min-height: 44px; display: flex; align-items: center; border-bottom: 1px solid rgba(238, 230, 218, .18); }
-  .home-hero { min-height: 660px; grid-template-columns: 1fr; align-items: start; gap: 48px; }
-  .home-hero::after { right: 24px; height: 25%; }
+  .home-hero { min-height: 720px; grid-template-columns: 1fr; align-items: end; gap: 36px; }
+  .home-opening-mark { right: 22px; top: 18px; width: 150px; }
   .home-copy p { max-width: 58ch; }
   .collection-preview { grid-template-columns: 1fr 1fr; }
   .collection-hero h1 { max-width: 10ch; }
@@ -740,10 +740,10 @@ body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
   .site-header { grid-template-columns: 1fr auto; gap: 14px; }
   .site-nav { gap: 18px; }
   .site-nav a { font-size: 10px; }
-  .home-hero { min-height: 590px; padding-top: 61px; padding-bottom: 67px; }
-  .home-hero::before { left: 50%; top: 18%; width: 220px; border-color: rgba(181, 44, 35, .22); }
-  .home-opening-mark { left: 37%; top: 18%; width: 275px; opacity: .8; }
-  .home-hero::after { right: 22px; height: 18%; }
+  .home-hero { min-height: 640px; padding-top: 78px; padding-bottom: 88px; }
+  .home-opening-mark { right: 14px; top: 8px; width: 112px; opacity: .8; }
+  .home-horizon::before { height: 36px; }
+  .home-horizon::after { height: 48px; }
   .home-copy h1 { padding-bottom: .1em; font-size: clamp(62px, 20vw, 108px); line-height: .84; }
   .home-copy p { margin-top: 38px; font-size: 14px; }
   .home-links a { min-height: 53px; font-size: 17px; }
