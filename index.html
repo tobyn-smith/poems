@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=banners" />
+    <link rel="stylesheet" href="styles.css?v=edition" />
   </head>
   <body data-page="home">
     <div class="site-shell">
@@ -32,14 +32,18 @@
           <a href="collection-one.html">bruises and nostalgia</a>
           <a href="collection-two.html">wonderlust</a>
           <a href="collection-three.html">my silhouette</a>
-          <a href="collection-four.html">the fool</a>
-          <a href="collection-five.html">collection five</a>
+          <a href="collection-four.html">the fool <small>new</small></a>
+          <a href="collection-five.html">collection five <small>soon</small></a>
         </nav>
         <button class="menu-toggle" type="button" aria-label="menu" aria-expanded="false"><span></span><span></span></button>
       </header>
 
       <main>
         <section class="home-hero" aria-labelledby="home-title">
+          <div class="banner-field home-field" aria-hidden="true">
+            <span class="home-stars"></span>
+            <span class="home-horizon"></span>
+          </div>
           <span class="home-opening-mark" aria-hidden="true"><span></span></span>
           <div class="home-copy home-copy-reveal">
             <h1 id="home-title"><span class="title-name">tobyn's</span><span class="title-poems">poems</span></h1>
@@ -49,8 +53,8 @@
             <a href="collection-one.html">bruises and nostalgia</a>
             <a href="collection-two.html">wonderlust</a>
             <a href="collection-three.html">my silhouette</a>
-            <a href="collection-four.html">the fool</a>
-            <a href="collection-five.html">collection five <small>coming soon!</small></a>
+            <a href="collection-four.html">the fool <small>new</small></a>
+            <a href="collection-five.html">collection five <small>coming soon</small></a>
           </div>
         </section>
 
@@ -97,7 +101,7 @@
             </div>
           </article>
           <article class="preview-collection reveal-on-scroll">
-            <a href="collection-four.html" class="preview-title">the fool</a>
+            <a href="collection-four.html" class="preview-title">the fool <small>new</small></a>
             <div class="preview-poems">
               <a href="collection-four.html#poem-26">a fool</a>
               <a href="collection-four.html#poem-27">anxious dogs</a>
@@ -108,6 +112,9 @@
               <a href="collection-four.html#poem-32">remember me?</a>
               <a href="collection-four.html#poem-33">dream on</a>
             </div>
+          </article>
+          <article class="preview-collection preview-soon reveal-on-scroll">
+            <a href="collection-five.html" class="preview-title">collection five <small>coming soon</small></a>
           </article>
         </section>
       </main>
