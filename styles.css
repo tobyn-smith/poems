@@ -154,7 +154,8 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .home-copy h1 .title-name { color: var(--paper); }
 .home-copy h1 .title-poems { margin-left: .09em; color: var(--signal); transition: transform .35s ease, letter-spacing .35s ease; }
 .home-copy h1:hover .title-poems { transform: translateX(.045em); letter-spacing: -.035em; }
-.home-copy p { max-width: 56ch; margin: clamp(48px, 5vw, 78px) 0 0; color: rgba(238, 230, 218, .68); font-size: 15px; line-height: 1.75; }
+.home-copy h1::after { content: ""; display: block; width: clamp(48px, 7vw, 96px); height: 2px; margin-top: 22px; background: var(--signal); }
+.home-copy p { max-width: 56ch; margin: clamp(28px, 3.4vw, 46px) 0 0; color: rgba(238, 230, 218, .68); font-size: 15px; line-height: 1.75; }
 .home-links { border-top: 1px solid rgba(238, 230, 218, .3); counter-reset: contents; }
 .home-links a {
   min-height: 58px;
@@ -227,9 +228,9 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .reveal-on-scroll:nth-child(4) { transition-delay: .3s; }
 .preview-title {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
   padding-bottom: 16px;
   border-bottom: 2px solid var(--signal);
   font-family: var(--display);
@@ -237,12 +238,36 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   letter-spacing: -.055em;
   transition: color .2s;
 }
+.preview-title .preview-name { min-width: 0; }
+.preview-title .poem-entry-graphic { flex: none; width: 28px; height: 28px; color: var(--signal); opacity: .9; }
+.preview-title small { margin-left: auto; }
 .preview-title:hover { color: var(--signal-dark); }
 .preview-soon { grid-column: 1 / -1; }
 .preview-soon .preview-title { max-width: 720px; }
-.preview-poems { display: flex; flex-direction: column; }
-.preview-poems a { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--paper-muted); font-family: var(--body); font-size: 13px; line-height: 1.3; transition: color .2s, padding-left .2s; }
-.preview-poems a:hover { padding-left: 8px; color: var(--signal-dark); }
+.preview-poems { display: flex; flex-direction: column; counter-reset: shelf; }
+.preview-poems a {
+  display: grid;
+  grid-template-columns: 2.2em minmax(0, 1fr);
+  column-gap: 6px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--paper-muted);
+  font-family: var(--body);
+  font-size: 13px;
+  line-height: 1.3;
+  transition: color .2s;
+}
+.preview-poems a::before {
+  content: counter(shelf, lower-roman) ".";
+  counter-increment: shelf;
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+.preview-poems a:hover,
+.preview-poems a:hover::before { color: var(--signal-dark); }
 
 .site-footer { min-height: 76px; padding: 0 var(--page-inline); display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(181, 44, 35, .7); background: var(--ink); color: rgba(238, 230, 218, .65); font-family: var(--mono); font-size: 9px; letter-spacing: .07em; text-transform: none; box-shadow: -50vmax 0 0 var(--ink), 50vmax 0 0 var(--ink); }
 .site-footer a { color: var(--signal); }
