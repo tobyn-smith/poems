@@ -103,6 +103,7 @@ a:focus-visible, summary:focus-visible, .menu-toggle:focus-visible { outline: 2p
 .home-links-reveal a:nth-child(2) { animation-delay: .72s; }
 .home-links-reveal a:nth-child(3) { animation-delay: .82s; }
 .home-links-reveal a:nth-child(4) { animation-delay: .92s; }
+.home-links-reveal a:nth-child(5) { animation-delay: 1.02s; }
 @keyframes typeset-in { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes copy-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes links-in { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
@@ -143,7 +144,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   margin: -34px 0 0;
   padding: clamp(78px, 9vw, 120px) var(--page-inline) clamp(80px, 9vw, 130px);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 5vw, 80px);
   border-radius: 26px 26px 0 0;
   box-shadow: 0 -18px 42px rgba(0, 0, 0, .24);
@@ -155,6 +156,7 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .reveal-on-scroll.is-revealed { opacity: 1; transform: translateY(0); }
 .reveal-on-scroll:nth-child(2) { transition-delay: .1s; }
 .reveal-on-scroll:nth-child(3) { transition-delay: .2s; }
+.reveal-on-scroll:nth-child(4) { transition-delay: .3s; }
 .preview-title {
   display: block;
   padding-bottom: 16px;
@@ -265,9 +267,169 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .mark-bag::after { left: 11px; top: 4px; width: 8px; height: 7px; border: 1px solid currentColor; border-bottom: 0; border-radius: 5px 5px 0 0; }
 .mark-speech::before { left: 5px; top: 6px; width: 20px; height: 15px; border: 1px solid currentColor; border-radius: 50%; }
 .mark-speech::after { left: 8px; bottom: 5px; width: 7px; height: 7px; border-left: 1px solid currentColor; transform: skew(-25deg); }
+.mark-fool::before { left: 11px; top: 2px; width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50%; }
+.mark-fool::after { left: 14px; top: 11px; width: 1px; height: 11px; background: currentColor; box-shadow: -6px 11px 0 currentColor, 6px 11px 0 currentColor; }
+.mark-anxious::before { left: 3px; top: 14px; width: 16px; height: 8px; border: 1px solid currentColor; border-radius: 8px 3px 4px 7px; }
+.mark-anxious::after { left: 16px; top: 8px; width: 9px; height: 8px; border: 1px solid currentColor; border-radius: 7px 7px 3px 3px; box-shadow: 1px -5px 0 -3px var(--paper), 1px -5px 0 -2px currentColor; }
+.mark-loud::before { left: 5px; top: 7px; width: 10px; height: 15px; border: 1px solid currentColor; border-radius: 10px 3px 3px 10px; }
+.mark-loud::after { left: 17px; top: 8px; width: 7px; height: 12px; border: 1px solid currentColor; border-left: 0; border-radius: 0 12px 12px 0; box-shadow: 3px 0 0 -1px var(--paper), 4px 0 0 0 currentColor; }
+.mark-georgia::before { left: 7px; top: 9px; width: 14px; height: 14px; border: 1px solid currentColor; border-radius: 50% 46% 54% 48%; }
+.mark-georgia::after { left: 15px; top: 3px; width: 8px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; border-radius: 0 80% 0 0; transform: rotate(18deg); }
+.mark-meadow::before { left: 5px; bottom: 4px; width: 1px; height: 13px; background: currentColor; box-shadow: 6px 3px 0 currentColor, 12px -2px 0 currentColor, 18px 2px 0 currentColor; }
+.mark-meadow::after { left: 7px; top: 3px; width: 1px; height: 5px; background: currentColor; box-shadow: 7px 4px 0 currentColor, 14px 1px 0 currentColor; }
+.mark-seasons::before { left: 5px; top: 5px; width: 20px; height: 20px; border: 1px solid currentColor; border-radius: 50%; border-right-color: transparent; transform: rotate(-20deg); }
+.mark-seasons::after { left: 14px; top: 2px; width: 1px; height: 11px; background: currentColor; transform: rotate(24deg); }
+.mark-remember::before { left: 5px; top: 6px; width: 20px; height: 16px; border: 1px solid currentColor; }
+.mark-remember::after { left: 5px; top: 13px; width: 20px; height: 1px; background: currentColor; transform: rotate(-7deg); }
+.mark-horizon::before { left: 10px; top: 3px; width: 10px; height: 10px; border: 1px solid currentColor; border-radius: 50%; }
+.mark-horizon::after { left: 3px; bottom: 5px; width: 24px; height: 9px; border-top: 1px solid currentColor; border-radius: 50%; }
 .poem-entry-body { max-width: 64ch; padding: 0 0 43px 102px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
 .poem-entry-body p { margin: 0 0 28px; }
 .poem-entry-body p:last-child { margin-bottom: 0; }
+
+body[data-collection="four"] { background: #07060a; }
+body[data-collection="four"] .collection-hero::before,
+body[data-collection="four"] .collection-hero::after { content: none; }
+.collection-hero-four {
+  min-height: min(880px, calc(100vh - 68px));
+  display: grid;
+  align-items: center;
+  padding-bottom: clamp(120px, 14vh, 190px);
+  color: var(--paper);
+  background:
+    radial-gradient(ellipse at 72% 18%, rgba(181, 44, 35, .28), transparent 36%),
+    radial-gradient(ellipse at 18% 78%, rgba(181, 44, 35, .12), transparent 32%),
+    #07060a;
+  --pointer-x: 0;
+  --pointer-y: 0;
+}
+.collection-hero-four h1 {
+  z-index: 2;
+  max-width: 11ch;
+  color: var(--paper);
+  font-size: clamp(72px, 11vw, 176px);
+  text-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+}
+.four-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate3d(calc(var(--pointer-x) * .12px), calc(var(--pointer-y) * .1px), 0);
+}
+.four-stars {
+  position: absolute;
+  inset: -8% -4% auto;
+  height: 72%;
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 18%, rgba(238, 230, 218, .9) 50%, transparent 52%),
+    radial-gradient(1px 1px at 18% 42%, rgba(238, 230, 218, .7) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 27% 12%, rgba(238, 230, 218, .85) 50%, transparent 52%),
+    radial-gradient(1px 1px at 36% 28%, rgba(238, 230, 218, .55) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 49% 16%, rgba(238, 230, 218, .8) 50%, transparent 52%),
+    radial-gradient(1px 1px at 58% 34%, rgba(238, 230, 218, .6) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 67% 10%, rgba(238, 230, 218, .9) 50%, transparent 52%),
+    radial-gradient(1px 1px at 74% 26%, rgba(181, 44, 35, .9) 50%, transparent 52%),
+    radial-gradient(1px 1px at 83% 18%, rgba(238, 230, 218, .75) 50%, transparent 52%),
+    radial-gradient(1.5px 1.5px at 91% 32%, rgba(238, 230, 218, .65) 50%, transparent 52%),
+    radial-gradient(1px 1px at 14% 62%, rgba(238, 230, 218, .4) 50%, transparent 52%),
+    radial-gradient(1px 1px at 44% 54%, rgba(238, 230, 218, .45) 50%, transparent 52%),
+    radial-gradient(1px 1px at 78% 48%, rgba(238, 230, 218, .4) 50%, transparent 52%);
+  animation: four-stars 18s ease-in-out infinite alternate;
+}
+.four-horizon {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: 19%;
+  height: 1px;
+  background: rgba(181, 44, 35, .85);
+  box-shadow: 0 0 22px rgba(181, 44, 35, .55);
+}
+.four-horizon::before,
+.four-horizon::after { content: ""; position: absolute; bottom: 0; border: 1px solid rgba(238, 230, 218, .28); border-bottom: 0; }
+.four-horizon::before { left: 6%; width: 34%; height: 92px; border-radius: 50% 46% 0 0; }
+.four-horizon::after { right: 4%; width: 42%; height: 128px; border-radius: 46% 54% 0 0; }
+.four-road {
+  position: absolute;
+  left: 54%;
+  bottom: 0;
+  width: min(28vw, 280px);
+  height: 24%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, rgba(238, 230, 218, .16), transparent 82%);
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+}
+.four-road::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to top, var(--signal), transparent);
+}
+.four-wanderer {
+  position: absolute;
+  left: 57%;
+  bottom: 17%;
+  width: 18px;
+  height: 34px;
+  animation: four-walk 16s ease-in-out infinite alternate;
+}
+.four-wanderer::before,
+.four-wanderer::after { content: ""; position: absolute; }
+.four-wanderer::before { left: 4px; top: 0; width: 8px; height: 8px; border: 1px solid rgba(238, 230, 218, .86); border-radius: 50%; }
+.four-wanderer::after { left: 8px; top: 10px; width: 1px; height: 13px; background: rgba(238, 230, 218, .86); box-shadow: -5px 13px 0 rgba(238, 230, 218, .86), 5px 13px 0 rgba(238, 230, 218, .86); }
+.collection-art-four {
+  z-index: 1;
+  border: 0;
+  width: clamp(150px, 20vw, 280px);
+  color: rgba(238, 230, 218, .78);
+  opacity: .8;
+  transform: translate3d(calc(var(--pointer-x) * -.2px), calc(-50% + var(--pointer-y) * -.16px), 0);
+}
+.collection-art-four::before { left: 18%; top: 8%; width: 28%; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; box-shadow: 0 0 0 10px rgba(7, 6, 10, .65); }
+.collection-art-four::after { left: 8%; top: 62%; width: 84%; height: 1px; background: var(--signal); transform: rotate(-8deg); box-shadow: 0 16px 0 rgba(238, 230, 218, .28), 0 32px 0 rgba(238, 230, 218, .16); }
+.collection-art-four span::before,
+.collection-art-four span::after { content: ""; position: absolute; }
+.collection-art-four span::before { left: 34%; top: 22%; width: 1px; height: 48%; background: currentColor; transform: rotate(18deg); }
+.collection-art-four span::after { right: 16%; bottom: 18%; width: 34%; height: 22%; border: 1px solid currentColor; border-bottom: 0; border-radius: 50% 50% 0 0; }
+@keyframes four-stars { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-18px, 10px, 0); } }
+@keyframes four-walk { from { transform: translate3d(-36px, 10px, 0); } to { transform: translate3d(28px, -4px, 0); } }
+body[data-collection="four"] .poems-section {
+  position: relative;
+  z-index: 1;
+  margin-top: -52px;
+  border-radius: 30px 30px 0 0;
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(181, 44, 35, .08), transparent 28%),
+    linear-gradient(180deg, #f6efe6 0%, var(--paper) 220px);
+  box-shadow: 0 -28px 60px rgba(0, 0, 0, .38);
+}
+body[data-collection="four"] .poem-entry-heading h2 { font-size: clamp(28px, 3.5vw, 52px); }
+body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90deg, rgba(181, 44, 35, .07), transparent 46%); }
+body[data-collection="four"] .poem-mark-echo {
+  position: absolute;
+  top: 18px;
+  right: 4px;
+  z-index: 0;
+  width: 30px;
+  height: 30px;
+  color: var(--signal);
+  opacity: 0;
+  transform: scale(2.2);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: opacity .45s ease, transform .45s ease;
+}
+body[data-collection="four"] .poem-entry[open] .poem-mark-echo,
+body[data-collection="four"] .poem-entry.is-active .poem-mark-echo {
+  color: var(--signal);
+  opacity: .62;
+  transform: scale(2.45);
+}
 
 .coming-page { position: relative; isolation: isolate; overflow: hidden; min-height: calc(100vh - 68px); padding: clamp(72px, 10vw, 150px) var(--page-inline); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(180px, .5fr); align-items: center; gap: clamp(40px, 9vw, 140px); background: var(--signal-dark); color: var(--paper); --pointer-x: 0; --pointer-y: 0; }
 .coming-scanline { position: absolute; z-index: 0; left: 0; right: 0; top: -20px; height: 1px; background: var(--paper); opacity: .26; animation: coming-scanline 8s 1s linear infinite; pointer-events: none; }
@@ -309,7 +471,6 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
   .home-hero::after { right: 24px; height: 25%; }
   .home-copy p { max-width: 58ch; }
   .collection-preview { grid-template-columns: 1fr 1fr; }
-  .preview-collection:last-child { grid-column: 1 / -1; max-width: calc(50% - 14px); }
   .collection-hero h1 { max-width: 10ch; }
   .collection-art { right: 8%; }
 }
@@ -332,7 +493,15 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
   .collection-art { top: auto; right: 18px; bottom: 18px; width: 108px; opacity: .78; filter: drop-shadow(0 0 10px rgba(181, 44, 35, .24)); transform: scale(.88); }
   .collection-art-one { transform: rotate(-14deg) scale(.88); }
   .collection-art-three { transform: skewY(-10deg) scale(.88); }
+  .collection-hero-four { min-height: 640px; padding-bottom: 92px; }
+  .collection-hero-four h1 { max-width: 8ch; font-size: clamp(56px, 16vw, 92px); }
+  .four-horizon::before { height: 54px; }
+  .four-horizon::after { height: 72px; }
+  .collection-art-four { top: auto; right: 18px; bottom: 72px; width: 108px; opacity: .9; transform: none; }
+  body[data-collection="four"] .poems-section { margin-top: -28px; border-radius: 22px 22px 0 0; }
+  body[data-collection="four"] .poem-mark-echo { display: none; }
   .collection-hero h1 { max-width: 9ch; padding: 0 0 17px 14px; font-size: clamp(48px, 15vw, 86px); }
+  body[data-collection="four"] .collection-hero h1 { max-width: 8ch; color: var(--paper); font-size: clamp(56px, 16vw, 92px); }
   .collection-hero h1::after { left: 14px; width: 54px; }
   .poems-section { padding: 50px 22px 80px; }
   .poem-entry { scroll-margin-top: 84px; }

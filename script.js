@@ -106,13 +106,78 @@ const poems = [
   {
     collection: "three", collectionLabel: "collection three", number: "ix.", title: "overshare",
     body: ["oversharing on my favourite dating apps\nlike, when did I have my last great nap\nor who let the evil cat out of the hat", "bashing the hierarchy, aged five\nbreaking out in an episode of hives\nor is this another subsequent lie", "get some money and bash the trees\ndriving through my old favourite town\nlooking like some right silly clown"]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "i.", title: "a fool",
+    body: [
+      "there is a fool a-loose\nand nobody knows his name\nlife is too big to fail like this\n\"namaste\" they say\nas the fool faces another tragedy",
+      "hairs prick up\nas he swerves past\nsixty-five in a fifty-five\nwith so much out there",
+      "i read a story online about him\nhe was too big to fail\nthe way he did\nleft a-dust",
+      "breathing fresh mountain air\nbecause a fool is a-loose\nand nobody knows his name"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "ii.", title: "anxious dogs",
+    body: [
+      "sipping straight\nby the river\nwind on my flesh\nthe smell of used wooden chairs\nbuttoned up\nlooking real smart\nready to start the day again",
+      "i'm sorry for picking at my t-shirt seams\nit comes out of me like an anxious dog\nwaiting for its owners\nwhile time flees away",
+      "does my car need an oil change?\ni'm waiting for a light\nto come on and tell me what's wrong",
+      "i'm sorry for picking at my t-shirt seams\nit comes out of me like an anxious dog\nwaiting for its owners\nwhile time flees away"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "iii.", title: "loud",
+    body: [
+      "i keep thinking about the day\nmy mum fractured her arm\nwhile i was at school\nwhile i didn't have a clue\nmy ears jammed by otosclerosis\nno wonder the smallest things\nkept slipping from me",
+      "suddenly i'm back on the victoria line\nthe train humming into stillness\neveryone spilling out\neven that kid with her new family dog\nand i can hear it all at once"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "iv.", title: "my georgia",
+    body: [
+      "flashlights in the rearview\nfull steam ahead on 75\nwhile the roads are swallowed\nby the vines and green shadow\ngeorgia has always felt\nlike something i loved too late\nsomething i am losing slowly",
+      "i love the red clay\nthe sanford parade\nthe heat that clings to my skin\nwhile the trees lean low",
+      "driving down the quiet roads\nsinging georgia on my mind\nin the heat of may"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "v.", title: "through the meadow",
+    body: [
+      "the rain beating down\non the crown of my hair\nmy tear ducts feel heavy today",
+      "i shift through the long grass\nthe footprints of the past\netched behind me",
+      "i forgot my umbrella today\nmaybe for the best\nfor the swirls in my hair\nsink closer to the ground\nwith every step",
+      "and still i continue to explore\nthe world that waits ahead"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "vi.", title: "come and go",
+    body: [
+      "sometimes i wish\nthat dogs had retirement homes\nor if i had the ability to clone you\ni miss that wet nose\nrubbing against my size small clothes\nit was an honour to be your person\nand what a privilege it was",
+      "sometimes when i lose hope\ni remind myself of you\nand while the grass died with you\nthe older i get\ni realise it comes and goes\nand the seasons don't wait up\nfor me\nor you"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "vii.", title: "remember me?",
+    body: [
+      "suddenly the linen etched on my skin\ndoesn't matter any more\nthey say it fades\nyou said you miss me\nguess that didn't stop you from making plans\nor filling the spaces\ni left behind",
+      "i wonder if you notice\nhow quiet it gets\nwhen there is no one\nleft to remember me"
+    ]
+  },
+  {
+    collection: "four", collectionLabel: "collection four", number: "viii.", title: "dream on",
+    body: [
+      "woke up at 7:51 am this morning\nmaybe something will save us\nsomething chose to live forever\nlaugh at heresy\nbecause something found this creature\nin the depths of hell\nand brought it up into the morning\ntaught it to move around\nlive freely",
+      "we don't know what's over this hill\nbut the sky is there\nand there is more of it\nthan we thought",
+      "dream on sometimes!\ntime is limited\nso take it outside\nkeep going"
+    ]
   }
 ];
 
 const editorialOrder = {
   one: ["strangers in love", "candlelit drives", "summer", "heartfelt", "you", "the after party", "big blue sky", "an odd christmas", "my old dog"],
   two: ["wonderland", "apple trees", "breeze", "seashore", "summertime rain on the southern train", "home sick", "chances", "dreamer", "bag claim"],
-  three: ["out of date", "closed doors", "an empty room", "between cities", "overconfidence", "bright lights", "overshare", "a morbid nightmare of mine"]
+  three: ["out of date", "closed doors", "an empty room", "between cities", "overconfidence", "bright lights", "overshare", "a morbid nightmare of mine"],
+  four: ["a fool", "anxious dogs", "loud", "my georgia", "through the meadow", "come and go", "remember me?", "dream on"]
 };
 
 const poemMarks = {
@@ -121,11 +186,13 @@ const poemMarks = {
   "big blue sky": "sky", "apple trees": "branch", "seashore": "tide", "summertime rain on the southern train": "train",
   "chances": "split", "closed doors": "door", "an empty room": "room", "strangers in love": "roots", "dreamer": "dream",
   "between cities": "city", "overconfidence": "stair", "summer": "sun", "bright lights": "spotlight",
-  "breeze": "breeze", "home sick": "road", "a morbid nightmare of mine": "nightmare", "bag claim": "bag", "overshare": "speech"
+  "breeze": "breeze", "home sick": "road", "a morbid nightmare of mine": "nightmare", "bag claim": "bag", "overshare": "speech",
+  "a fool": "fool", "anxious dogs": "anxious", "loud": "loud", "my georgia": "georgia",
+  "through the meadow": "meadow", "come and go": "seasons", "remember me?": "remember", "dream on": "horizon"
 };
 
 const romanNumerals = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix."];
-const collectionLabels = { one: "bruises and nostalgia", two: "wonderlust", three: "my silhouette" };
+const collectionLabels = { one: "bruises and nostalgia", two: "wonderlust", three: "my silhouette", four: "collection four" };
 const editorialPosition = new Map();
 Object.entries(editorialOrder).forEach(([collectionName, titles]) => {
   titles.forEach((title, index) => editorialPosition.set(title, { collection: collectionName, index }));
@@ -219,7 +286,9 @@ if (menuToggle && header) {
 }
 
 const comingPage = document.querySelector(".coming-page");
-if (comingPage && !prefersReducedMotion) {
+const fourHero = document.querySelector(".collection-hero-four");
+const parallaxSurface = comingPage || fourHero;
+if (parallaxSurface && !prefersReducedMotion) {
   let targetX = 0;
   let targetY = 0;
   let currentX = 0;
@@ -230,8 +299,8 @@ if (comingPage && !prefersReducedMotion) {
   const drawComingParallax = () => {
     currentX += (targetX - currentX) * .08;
     currentY += (targetY - currentY) * .08;
-    comingPage.style.setProperty("--pointer-x", currentX.toFixed(2));
-    comingPage.style.setProperty("--pointer-y", currentY.toFixed(2));
+    parallaxSurface.style.setProperty("--pointer-x", currentX.toFixed(2));
+    parallaxSurface.style.setProperty("--pointer-y", currentY.toFixed(2));
     if (Math.abs(targetX - currentX) > .1 || Math.abs(targetY - currentY) > .1) {
       frame = requestAnimationFrame(drawComingParallax);
     } else {
@@ -243,22 +312,22 @@ if (comingPage && !prefersReducedMotion) {
     if (!frame) frame = requestAnimationFrame(drawComingParallax);
   };
 
-  comingPage.addEventListener("pointermove", (event) => {
+  parallaxSurface.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") return;
-    const bounds = comingPage.getBoundingClientRect();
+    const bounds = parallaxSurface.getBoundingClientRect();
     targetX = ((event.clientX - bounds.left) / bounds.width - .5) * 100;
     targetY = ((event.clientY - bounds.top) / bounds.height - .5) * 100;
     wakeComingParallax();
   }, { passive: true });
-  comingPage.addEventListener("pointerleave", () => {
+  parallaxSurface.addEventListener("pointerleave", () => {
     targetX = 0;
     targetY = 0;
     wakeComingParallax();
   }, { passive: true });
-  comingPage.addEventListener("pointerdown", () => {
-    comingPage.classList.add("is-pressed");
+  parallaxSurface.addEventListener("pointerdown", () => {
+    parallaxSurface.classList.add("is-pressed");
     window.clearTimeout(pressTimer);
-    pressTimer = window.setTimeout(() => comingPage.classList.remove("is-pressed"), 260);
+    pressTimer = window.setTimeout(() => parallaxSurface.classList.remove("is-pressed"), 260);
   }, { passive: true });
 }
 
@@ -269,7 +338,9 @@ if (poemList && collection) {
   poemList.innerHTML = collectionPoems.map((poem, collectionIndex) => {
     const index = poems.indexOf(poem);
     const stanzas = poem.body.map((stanza) => `<p>${stanza.replaceAll("\n", "<br />")}</p>`).join("");
+    const echo = collection === "four" ? `<span class="poem-entry-graphic poem-mark-echo mark-${poem.mark}" aria-hidden="true"></span>` : "";
     return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
+      ${echo}
       <summary class="poem-entry-heading" aria-label="${poem.number} ${poem.title}">
         <span class="poem-entry-number">${poem.number}</span>
         <span class="poem-entry-graphic mark-${poem.mark}" aria-hidden="true"></span>
