@@ -172,7 +172,7 @@ const poems = [
     ]
   },
   {
-    collection: "bonus", collectionLabel: "bonus", number: "", title: "mediocre sandwiches",
+    collection: "four", collectionLabel: "the fool", number: "bonus", bonus: true, title: "mediocre sandwiches",
     body: [
       "a bustling coffee shop\noff the street i grew up on\nthey sold mediocre sandwiches",
       "you can catch me sitting by the door\nstationary in my forever spot\na lukewarm coffee in one hand\nand a half eaten sandwich in the other"
@@ -184,7 +184,7 @@ const editorialOrder = {
   one: ["strangers in love", "candlelit drives", "summer", "heartfelt", "you", "the after party", "big blue sky", "an odd christmas", "my old dog"],
   two: ["wonderland", "apple trees", "breeze", "seashore", "summertime rain on the southern train", "home sick", "chances", "dreamer", "bag claim"],
   three: ["out of date", "closed doors", "an empty room", "between cities", "overconfidence", "bright lights", "overshare", "a morbid nightmare of mine"],
-  four: ["a fool", "anxious dogs", "loud", "my georgia", "through the meadow", "come and go", "remember me?", "dream on"]
+  four: ["a fool", "anxious dogs", "loud", "my georgia", "through the meadow", "come and go", "remember me?", "dream on", "mediocre sandwiches"]
 };
 
 const poemMarks = {
@@ -224,21 +224,10 @@ poems.forEach((poem) => {
   if (position) {
     poem.collection = position.collection;
     poem.collectionLabel = collectionLabels[position.collection];
-    poem.number = romanNumerals[position.index];
+    poem.number = poem.bonus ? "bonus" : romanNumerals[position.index];
   }
   poem.body = poem.body.map((stanza) => stanza.toLowerCase());
 });
-
-const bonusBody = document.querySelector("#bonus-body");
-if (bonusBody) {
-  const bonus = poems.find((poem) => poem.title === "mediocre sandwiches");
-  if (bonus) {
-    bonusBody.innerHTML = bonus.body.map((stanza) => {
-      const lines = stanza.split("\n").map((line) => `<span class="poem-line">${line}</span>`).join("");
-      return `<p>${lines}</p>`;
-    }).join("");
-  }
-}
 
 const progress = document.createElement("div");
 progress.className = "scroll-progress";
@@ -359,7 +348,7 @@ if (poemList && collection) {
       return `<p>${lines}</p>`;
     }).join("");
     const echo = `<span class="poem-entry-graphic poem-mark-echo mark-${poem.mark}" aria-hidden="true"></span>`;
-    return `<details class="poem-entry" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
+    return `<details class="poem-entry${poem.bonus ? " is-bonus" : ""}" id="poem-${index}"${collectionIndex === 0 ? " open" : ""}>
       ${echo}
       <summary class="poem-entry-heading" aria-label="${poem.number} ${poem.title}">
         <span class="poem-entry-number">${poem.number}</span>

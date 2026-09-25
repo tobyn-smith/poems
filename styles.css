@@ -244,12 +244,6 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .preview-title:hover { color: var(--signal-dark); }
 .preview-soon { grid-column: 1 / -1; }
 .preview-soon .preview-title { max-width: 720px; }
-.preview-bonus { grid-column: 1 / -1; }
-.preview-bonus .preview-title { max-width: 720px; }
-.preview-bonus .preview-name { margin: 0; font: inherit; letter-spacing: inherit; }
-.bonus-body { max-width: 46ch; padding: 22px 0 4px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
-.bonus-body p { margin: 0 0 22px; }
-.bonus-body p:last-child { margin-bottom: 0; }
 .preview-poems { display: flex; flex-direction: column; counter-reset: shelf; }
 .preview-poems a {
   display: grid;
@@ -272,6 +266,8 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
   font-size: 10px;
   letter-spacing: .04em;
 }
+.preview-poems a.is-bonus { grid-template-columns: 4.4em minmax(0, 1fr); }
+.preview-poems a.is-bonus::before { content: "bonus"; counter-increment: none; letter-spacing: .02em; }
 .preview-poems a:hover,
 .preview-poems a:hover::before { color: var(--signal-dark); }
 
@@ -320,7 +316,9 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .poem-entry-heading h2 { margin: 0; font-size: clamp(24px, 3.2vw, 44px); line-height: 1.08; transition: transform .25s ease; }
 .poem-entry-heading:hover h2 { transform: translateX(6px); }
 .poem-entry[open] { background: linear-gradient(90deg, rgba(181, 44, 35, .065), transparent 46%); }
-.poem-entry-number { color: var(--paper-muted); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; transition: color .35s; }
+.poem-entry-number { color: var(--paper-muted); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; white-space: nowrap; transition: color .35s; }
+.poem-entry.is-bonus .poem-entry-heading { grid-template-columns: 52px 38px minmax(0, 1fr); }
+.poem-entry.is-bonus .poem-entry-number { letter-spacing: .04em; }
 .poem-entry.is-active .poem-entry-number { color: var(--signal); }
 .poem-entry-graphic { position: relative; width: 30px; height: 30px; color: var(--paper-muted); opacity: .52; transition: color .35s, opacity .35s, transform .35s; }
 .poem-entry.is-active .poem-entry-graphic:not(.poem-mark-echo) { color: var(--signal); opacity: 1; transform: scale(1.08); }
@@ -823,8 +821,7 @@ body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90d
   .preview-title { font-size: 23px; }
   .preview-poems a { padding: 13px 0; }
   .preview-collection:last-child { grid-column: auto; max-width: none; }
-  .preview-soon, .preview-bonus { grid-column: 1 / -1; }
-  .bonus-body { font-size: 14px; line-height: 1.82; }
+  .preview-soon { grid-column: 1 / -1; }
   .home-horizon { bottom: 10%; }
   .home-horizon::before { height: 42px; }
   .home-horizon::after { height: 64px; }
@@ -861,6 +858,7 @@ body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90d
   .poem-entry { scroll-margin-top: 84px; }
   .poem-entry::before { left: -10px; }
   .poem-entry-heading { grid-template-columns: 34px 34px minmax(0, 1fr); gap: 8px; padding: 19px 0; }
+  .poem-entry.is-bonus .poem-entry-heading { grid-template-columns: 48px 34px minmax(0, 1fr); }
   .poem-entry-heading h2 { font-size: 22px; }
   .poem-entry-graphic { width: 28px; height: 28px; }
   .poem-entry-body { padding: 0 0 35px 76px; font-size: 14px; line-height: 1.82; }
