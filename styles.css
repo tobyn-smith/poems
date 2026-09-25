@@ -244,6 +244,12 @@ h1, h2 { font-family: var(--display); font-weight: 500; letter-spacing: -.075em;
 .preview-title:hover { color: var(--signal-dark); }
 .preview-soon { grid-column: 1 / -1; }
 .preview-soon .preview-title { max-width: 720px; }
+.preview-bonus { grid-column: 1 / -1; }
+.preview-bonus .preview-title { max-width: 720px; }
+.preview-bonus .preview-name { margin: 0; font: inherit; letter-spacing: inherit; }
+.bonus-body { max-width: 46ch; padding: 22px 0 4px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
+.bonus-body p { margin: 0 0 22px; }
+.bonus-body p:last-child { margin-bottom: 0; }
 .preview-poems { display: flex; flex-direction: column; counter-reset: shelf; }
 .preview-poems a {
   display: grid;
@@ -383,6 +389,8 @@ body[data-collection="three"] .collection-hero::after { left: 62%; top: 24%; wid
 .mark-remember::after { left: 5px; top: 13px; width: 20px; height: 1px; background: currentColor; transform: rotate(-7deg); }
 .mark-horizon::before { left: 10px; top: 3px; width: 10px; height: 10px; border: 1px solid currentColor; border-radius: 50%; }
 .mark-horizon::after { left: 3px; bottom: 5px; width: 24px; height: 9px; border-top: 1px solid currentColor; border-radius: 50%; }
+.mark-sandwich::before { left: 4px; top: 9px; width: 22px; height: 11px; border-top: 1px solid currentColor; border-bottom: 1px solid currentColor; }
+.mark-sandwich::after { left: 6px; top: 13px; width: 18px; height: 1px; background: currentColor; box-shadow: 0 3px 0 currentColor; }
 .poem-entry-body { position: relative; z-index: 1; max-width: 64ch; padding: 0 0 43px 102px; color: var(--paper-muted); font-family: var(--body); font-size: 15px; line-height: 1.9; }
 .poem-entry[open] .poem-entry-body { animation: poem-open .5s ease both; }
 @keyframes poem-open { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -815,7 +823,8 @@ body[data-collection="four"] .poem-entry[open] { background: linear-gradient(90d
   .preview-title { font-size: 23px; }
   .preview-poems a { padding: 13px 0; }
   .preview-collection:last-child { grid-column: auto; max-width: none; }
-  .preview-soon { grid-column: 1 / -1; }
+  .preview-soon, .preview-bonus { grid-column: 1 / -1; }
+  .bonus-body { font-size: 14px; line-height: 1.82; }
   .home-horizon { bottom: 10%; }
   .home-horizon::before { height: 42px; }
   .home-horizon::after { height: 64px; }

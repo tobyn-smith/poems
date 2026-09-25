@@ -170,6 +170,13 @@ const poems = [
       "we don't know what's over this hill\nbut the sky is there\nand there is more of it\nthan we thought",
       "dream on sometimes!\ntime is limited\nso take it outside\nkeep going"
     ]
+  },
+  {
+    collection: "bonus", collectionLabel: "bonus", number: "", title: "mediocre sandwiches",
+    body: [
+      "a bustling coffee shop\noff the street i grew up on\nthey sold mediocre sandwiches",
+      "you can catch me sitting by the door\nstationary in my forever spot\na lukewarm coffee in one hand\nand a half eaten sandwich in the other"
+    ]
   }
 ];
 
@@ -188,7 +195,8 @@ const poemMarks = {
   "between cities": "city", "overconfidence": "stair", "summer": "sun", "bright lights": "spotlight",
   "breeze": "breeze", "home sick": "road", "a morbid nightmare of mine": "nightmare", "bag claim": "bag", "overshare": "speech",
   "a fool": "fool", "anxious dogs": "anxious", "loud": "loud", "my georgia": "georgia",
-  "through the meadow": "meadow", "come and go": "seasons", "remember me?": "remember", "dream on": "horizon"
+  "through the meadow": "meadow", "come and go": "seasons", "remember me?": "remember", "dream on": "horizon",
+  "mediocre sandwiches": "sandwich"
 };
 
 const romanNumerals = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix."];
@@ -220,6 +228,17 @@ poems.forEach((poem) => {
   }
   poem.body = poem.body.map((stanza) => stanza.toLowerCase());
 });
+
+const bonusBody = document.querySelector("#bonus-body");
+if (bonusBody) {
+  const bonus = poems.find((poem) => poem.title === "mediocre sandwiches");
+  if (bonus) {
+    bonusBody.innerHTML = bonus.body.map((stanza) => {
+      const lines = stanza.split("\n").map((line) => `<span class="poem-line">${line}</span>`).join("");
+      return `<p>${lines}</p>`;
+    }).join("");
+  }
+}
 
 const progress = document.createElement("div");
 progress.className = "scroll-progress";
